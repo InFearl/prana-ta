@@ -11,12 +11,13 @@ class Penggunaan extends Model
     protected $table = 'penggunaan';
 
     protected $fillable = [
-        'id_persediaan','tanggal_penggunaan','jumlah_penggunaan'
+        'id_persediaan', 'tanggal_penggunaan', 'jumlah_penggunaan'
     ];
 
     protected $primaryKey = 'id';
 
-    public function detailpenggunaan(){
-        return $this->hasMany(DetailPenggunaan::class,'id');
-    }}
-
+    public function detailpenggunaan()
+    {
+        return $this->hasMany(DetailPenggunaan::class, 'id');
+    }
+}

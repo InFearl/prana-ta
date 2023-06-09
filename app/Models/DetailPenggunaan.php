@@ -11,16 +11,18 @@ class DetailPenggunaan extends Model
     protected $table = 'detail_penggunaan';
 
     protected $fillable = [
-        'id_persediaan','id_penggunaan','jumlah_penggunaan'
+        'id_persediaan', 'id_penggunaan', 'jumlah_penggunaan'
     ];
 
     protected $primaryKey = 'id';
 
-    public function persediaan(){
-        return $this->belongsTo(Persediaan::class,'id_persediaan');
+    public function persediaan()
+    {
+        return $this->belongsTo(Persediaan::class, 'id_persediaan');
     }
 
-    public function penggunaan(){
-        return $this->belongsTo(Penggunaan::class,'id_penggunaan');
+    public function penggunaan()
+    {
+        return $this->belongsTo(Penggunaan::class, 'id_penggunaan');
     }
 }

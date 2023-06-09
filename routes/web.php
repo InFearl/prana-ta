@@ -21,11 +21,11 @@ use GuzzleHttp\Middleware;
 |
 */
 
-route::controller(DashboardController::class)->group(function(){
+route::controller(DashboardController::class)->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-route::controller(PemasukanController::class)->group(function(){
+route::controller(PemasukanController::class)->group(function () {
     Route::get('/pemasukan', [PemasukanController::class, 'index'])->name('pemasukan');
     Route::get('/tambah.pemasukan', [PemasukanController::class, 'create'])->name('tambah.pemasukan');
     Route::post('/simpan.pemasukan', [PemasukanController::class, 'store'])->name('simpan.pemasukan');
@@ -35,29 +35,29 @@ route::controller(PemasukanController::class)->group(function(){
     Route::get('/cetak.pemasukan', [PemasukanController::class, 'cetakpemasukan'])->name('cetak.pemasukan');
 });
 
-route::controller(PenggunaanController::class)->group(function(){
-    Route::get('/penggunaan', [PenggunaanController::class, 'index'])->name('penggunaan');
-    Route::get('/tambah.penggunaan', [PenggunaanController::class, 'create'])->name('tambah.penggunaan');
-    Route::post('/simpan.penggunaan', [PenggunaanController::class, 'store'])->name('simpan.penggunaan');
-    Route::get('/ubah.penggunaan/{id}', [PenggunaanController::class, 'edit'])->name('ubah.penggunaan');
-    Route::post('/update.penggunaan/{id}', [PenggunaanController::class, 'update'])->name('update.penggunaan');
-    Route::get('/delete.penggunaan/{id}', [PenggunaanController::class, 'destroy'])->name('delete.penggunaan');
-    Route::get('/cetak.penggunaan', [PenggunaanController::class, 'cetakpenggunaan'])->name('cetak.penggunaan');
-    Route::post('/add.penggunaan', [PenggunaanController::class, 'addListPenggunaan'])->name('add.penggunaan');
+route::controller(PenggunaanController::class)->group(function () {
+    Route::get('/penggunaan', 'index')->name('penggunaan');
+    Route::get('/tambah.penggunaan', 'create')->name('tambah.penggunaan');
+    Route::get('/simpan.penggunaan', 'store')->name('simpan.penggunaan');
+    Route::get('/ubah.penggunaan/{id}', 'edit')->name('ubah.penggunaan');
+    Route::post('/update.penggunaan/{id}', 'update')->name('update.penggunaan');
+    Route::get('/delete.penggunaan/{id}', 'destroy')->name('delete.penggunaan');
+    Route::get('/cetak.penggunaan', 'cetakpenggunaan')->name('cetak.penggunaan');
+    Route::post('/add.penggunaan', 'addListPenggunaan')->name('add.penggunaan');
+    Route::get('/show.penggunaan/{id}', 'show')->name('show.penggunaan');
 });
 
-route::controller(PersediaanController::class)->group(function(){
+route::controller(PersediaanController::class)->group(function () {
     Route::get('/persediaan', [PersediaanController::class, 'index'])->name('persediaan');
 });
 
-route::controller(PemesananController::class)->group(function(){
+route::controller(PemesananController::class)->group(function () {
     Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan');
     Route::get('/tambah.pemesanan', [PemesananController::class, 'create'])->name('tambah.pemesanan');
     Route::post('/simpan.pemesanan', [PemesananController::class, 'store'])->name('simpan.pemesanan');
-
 });
 
-route::controller(PesananController::class)->group(function(){
+route::controller(PesananController::class)->group(function () {
     Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan');
     Route::get('/tambah.pesanan', [PesananController::class, 'create'])->name('tambah.pesanan');
     Route::post('/simpan.pesanan', [PesananController::class, 'store'])->name('simpan.pesanan');
@@ -67,7 +67,7 @@ route::controller(PesananController::class)->group(function(){
     Route::get('/cetak.pesanan', [PesananController::class, 'cetakpesanan'])->name('cetak.pesanan');
 });
 
-route::controller(PersediaanController::class)->group(function(){
+route::controller(PersediaanController::class)->group(function () {
     Route::get('/persediaan', [PersediaanController::class, 'index'])->name('persediaan');
 });
 
@@ -78,10 +78,10 @@ Route::get('/login', function () {
 
 Route::get('/postlogin', 'LoginController@postlogin')->name('postlogin');
 
-Route::controller(LoginController::class)->group(function (){
+Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name('login');
     Route::post('/login', 'login')->name('login.post');
-    Route::get('/logout','logout')->name('logout.post');
+    Route::get('/logout', 'logout')->name('logout.post');
 
     // Route::middleware('user')->group(function () {
     //     Route::get('/logout', 'logout')->name('logout.post');

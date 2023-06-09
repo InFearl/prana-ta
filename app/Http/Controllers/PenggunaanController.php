@@ -19,14 +19,14 @@ class PenggunaanController extends Controller
      */
     public function index()
     {
-        $dbpenggunaan = Penggunaan::with('persediaan')->latest()->paginate(5);
-        return view('fumigator.pages.penggunaan.index',compact('dbpenggunaan'));
+        $dbpenggunaan = Penggunaan::with(['detailpenggunaan.persediaan'])->latest()->paginate(5);
+        return view('fumigator.pages.penggunaan.index', compact('dbpenggunaan'));
     }
 
     public function cetakpenggunaan()
     {
         $dbcetakpenggunaan = Penggunaan::with('persediaan')->get();
-        return view('fumigator.pages.penggunaan.cetak',compact('dbcetakpenggunaan'));
+        return view('fumigator.pages.penggunaan.cetak', compact('dbcetakpenggunaan'));
     }
 
     /**
@@ -35,11 +35,11 @@ class PenggunaanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-        
-    {   
+    {
         $temporary_penggunaan = session("temporary_penggunaan");
         $dbpersediaan = Persediaan::all();
-        return view('fumigator.pages.penggunaan.tambah',compact('dbpersediaan','temporary_penggunaan'));
+
+        return view('fumigator.pages.penggunaan.tambah', compact('dbpersediaan', 'temporary_penggunaan'));
     }
 
     /**
@@ -51,47 +51,73 @@ class PenggunaanController extends Controller
     public function store(Request $request)
     {
         $dbpenggunaan = Penggunaan::create([
-            'tanggal_penggunaan'=> Carbon::now(),
-            'jumlah_penggunaan'=> Carbon::now(),
-        ]);             
+            'tanggal_penggunaan' => Carbon::now(),
+        ]);
 
-        $temporary_penggunaan = session("temporary_penggunaan");
-        foreach ($temporary_penggunaan as $temp) {
-            DetailPenggunaan::create([
-                'id_penggunaan' => $dbpenggunaan->id,
-                'id_persediaan' => $temp['id'],
-                'jumlah_penggunaan' => $temp['jumlah_penggunaan']
-            ]);
+        DB::beginTransaction();
+        try {
+            $temporary_penggunaan = session("temporary_penggunaan");
+            foreach ($temporary_penggunaan as $temp) {
+                DetailPenggunaan::create([
+                    'id_penggunaan' => $dbpenggunaan->id,
+                    'id_persediaan' => $temp['id'],
+                    'jumlah_penggunaan' => $temp['jumlah_penggunaan']
+                ]);
+                // Update stok persediaan sesuai dengan persediaan yang diinput ke detail penggunaan
+                $persediaan = Persediaan::where('id', $temp['id'])->first();
+                $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan - $temp['jumlah_penggunaan'];
+                $persediaan->save();
+                // Update stok persediaan sesuai dengan persediaan yang diinput ke detail penggunaan
+            }
+            DB::commit();
+        } catch (\Exception $ex) {
+            //throw $th;
+            echo $ex->getMessage();
+            DB::rollBack();
         }
+
+        //Menghapus session 
         session()->forget("temporary_penggunaan");
-        // $persediaan = Persediaan::where('id', $request->id_persediaan)->first();
-        
-        // $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan - $request->jumlah_penggunaan;
-        
-        // $persediaan->save();
+        //Menghapus session 
+
 
         return redirect('penggunaan')->with('toast_success', 'Data Berhasil Ditambah');
     }
 
     public function addListPenggunaan(Request $request)
     {
-        $this->validate($request, [
+        // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
+        $request->validate([
             'id_persediaan' => 'required',
             'jumlah_penggunaan' => 'required'
         ]);
-        $dbpersediaan = DB::table('persediaan')
-            ->where('id', $request->id_persediaan)
-            ->first();
+        // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
 
+        // Mencari data menggunakan query builder
+        // $dbpersediaan = DB::table('persediaan')
+        //     ->where('id', $request->id_persediaan)
+        //     ->first();
+        // Mencari data menggunakan query builder
+
+        // Mencari data menggunakan model
+        $dbpersediaan = Persediaan::findorfail($request->id_persediaan);
+        // Mencari data menggunakan model
+
+        // Inisialisasi session dan dimasukkan ke variabel
         $temporary_penggunaan = session("temporary_penggunaan");
+        // Inisialisasi session dan dimasukkan ke variabel
 
+        // Memasukkan data array ke variabel session dengan id persediaan sebagai key
         $temporary_penggunaan[$request->id_persediaan] = [
             "id" => $request->id_persediaan,
             "nama_persediaan" => $dbpersediaan->nama_persediaan,
             "jumlah_penggunaan" => $request->jumlah_penggunaan
         ];
+        // Memasukkan data array ke variabel session dengan id persediaan sebagai key
 
+        // Memasukkan atau memperbarui isi dari variable temporary ke session
         session(["temporary_penggunaan" => $temporary_penggunaan]);
+        // Memasukkan atau memperbarui isi dari variable temporary ke session
 
         return redirect()->route('tambah.penggunaan');
     }
@@ -103,7 +129,10 @@ class PenggunaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $dbpenggunaan = DetailPenggunaan::with(['persediaan', 'penggunaan'])->where('id_penggunaan', $id)->get();
+        // dd($dbpenggunaan);
+
+        return view('fumigator.pages.penggunaan.detail', compact('dbpenggunaan'));
     }
 
     /**
@@ -113,9 +142,10 @@ class PenggunaanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   $dbpersediaan = Persediaan::all();
+    {
+        $dbpersediaan = Persediaan::all();
         $pen = Penggunaan::with('persediaan')->findorfail($id);
-        return view('fumigator.pages.penggunaan.ubah',compact('pen','dbpersediaan'));
+        return view('fumigator.pages.penggunaan.ubah', compact('pen', 'dbpersediaan'));
     }
 
     /**
@@ -131,9 +161,9 @@ class PenggunaanController extends Controller
         // $pen->update($request->all());
 
         $persediaan = Persediaan::where('id', $request->id_persediaan)->first();
-        
+
         $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan + $pen->jumlah_penggunaan - $request->jumlah_penggunaan;
-        
+
         $persediaan->save();
 
         $pen->jumlah_penggunaan = $request->jumlah_penggunaan;
