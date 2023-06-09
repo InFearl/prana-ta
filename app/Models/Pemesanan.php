@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pemasukan extends Model
+class Pemesanan extends Model
 {
     use HasFactory;
-    protected $table = 'pemasukan';
+    protected $table = 'pemesanan';
 
     protected $fillable = [
-        'id_persediaan','biaya_total','tanggal_pemasukan','jumlah_pemasukan'
+        'id_persediaan','biaya_total','tanggal_pemesanan','jumlah_pemesanan','status_pemesanan'
     ];
 
     protected $primaryKey = 'id';
@@ -19,4 +19,5 @@ class Pemasukan extends Model
     public function persediaan(){
         return $this->belongsTo(Persediaan::class,'id_persediaan');
     }
+
 }

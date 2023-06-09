@@ -20,9 +20,25 @@ class UserSeeder extends Seeder
         User::create([
             'user_id' => '10001',
             'slug' => Str::random(16),
-            'nama' => 'farel',
+            'nama' => 'fumigator',
             'role' => 'fumigator',
-            'password' => bcrypt('ngentot'),
+            'password' => bcrypt('fumigator'),
+        ]);
+
+        User::create([
+            'user_id' => '10002',
+            'slug' => Str::random(16),
+            'nama' => 'administrasi',
+            'role' => 'administrasi',
+            'password' => bcrypt('administrasi'),
+        ]);
+
+        User::create([
+            'user_id' => '10004',
+            'slug' => Str::random(16),
+            'nama' => 'manager',
+            'role' => 'manager',
+            'password' => bcrypt('manager'),
         ]);
     }
 }

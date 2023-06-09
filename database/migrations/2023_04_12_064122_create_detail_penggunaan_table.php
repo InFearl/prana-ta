@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_persediaan');
             $table->string('id_penggunaan');
-            $table->integer('jumlah_penggunaan');
+            $table->integer('jumlah_penggunaan')->default(0);
             $table->timestamps();
         });
     }

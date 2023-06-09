@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('id_persediaan');
             $table->string('id_pemasukan');
-            $table->integer('jumlah_pemasukan');
+            $table->integer('eoq')->default(0);
+            $table->integer('jumlah_pemasukan')->default(0);
             $table->timestamps();
         });
     }

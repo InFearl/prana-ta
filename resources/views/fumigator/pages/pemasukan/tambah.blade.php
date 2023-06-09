@@ -22,6 +22,21 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-3 row">
+                        <select class="form-control select2" style="width: 100%;" name="id_persediaan" id="id_persediaan">
+                            <option disable value>pilih persediaan</option>
+                            @foreach ($dbpersediaan as $item)
+                            <option value="{{ $item->id }}">{{ $item->nama_persediaan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="example-date-input" class="col-md-2 col-form-label">Jumlah Pemasukan Persediaan</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" id="jumlah_pemasukan" name="jumlah_pemasukan" value="jumlah persediaan"
+                                id="example-date-input">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="example-date-input" class="col-md-2 col-form-label">Tanggal Pemasukan Persediaan</label>
                         <div class="col-md-10">
                             <input class="form-control" type="date" id="tanggal_pemasukan" name="tanggal_pemasukan" value="2019-08-19"
@@ -31,7 +46,7 @@
                     <div class="mb-3 row">
                         <label for="example-text-input"class="col-md-2 col-form-label">Biaya Total</label>
                         <div class="col-md-10">
-                            <input class="form-control" type="number" id="biaya_total" name="biaya_total" placeholder="Status Pesanan"
+                            <input class="form-control" type="number" id="biaya_total" name="biaya_total" placeholder="Biaya Total"
                                 id="example-text-input">
                         </div>
                     </div>

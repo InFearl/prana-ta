@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('penggunaan', function (Blueprint $table) {
             $table->id();
+            $table->integer('jumlah_penggunaan')->default(0);
             $table->date('tanggal_penggunaan');
             $table->timestamps();
         });

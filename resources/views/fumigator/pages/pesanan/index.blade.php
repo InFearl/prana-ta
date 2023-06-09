@@ -7,24 +7,20 @@
 @section('content')
 <div class="container-fluid">    
     <h1 class="h3 mb-0 text-gray-800">Pesanan</h1>    
-    <div>
-        <button type="button" class="btn btn-success">konfirmasi</button>
-        <a href="{{ route('tambah.pesanan') }}" class="btn btn-success" 
-            ><i class="fas fa-plus"></i><span>Tambah</span></a>
-        <button type="button" class="btn btn-success">Cetak</button>
-    </div>
-
-<!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
+        <div class="d-flex justify-content-end mb-4">
+            <button type="button" class="btn btn-success">konfirmasi</button>
+            <a href="{{ route('tambah.pesanan') }}" class="btn btn-success" ><i class="fas fa-plus"></i><span>Tambah</span></a>
+            <a href="{{ route('cetak.pesanan') }}" target="_blank" class="btn btn-success" ><i class="fas fa-print"></i><span>Cetak</span></a>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Id Pesanan</th>
                         <th>Nama Perusahaan</th>
-                        <th>20ft</th>
-                        <th>40ft</th>
+                        <th>Container</th>
                         <th>Tanggal Masuk Pesanan</th>
                         <th>Deadline Pesanan</th>
                         <th>Status Pesanan</th>
@@ -35,8 +31,7 @@
                     <tr>
                         <th>Id Pesanan</th>
                         <th>Nama Perusahaan</th>
-                        <th>20ft</th>
-                        <th>40ft</th>
+                        <th>Container</th>
                         <th>Tanggal Masuk Pesanan</th>
                         <th>Deadline Pesanan</th>
                         <th>Status Pesanan</th>
@@ -49,8 +44,7 @@
                     <tr>
                         <td>{{ $item->id}}</td>
                         <td>{{ $item->nama_perusahaan }}</td>
-                        <td>{{ $item->c20ft }}</td>
-                        <td>{{ $item->c40ft }}</td>
+                        <td>{{ $item->container }}</td>
                         <td>{{ date('d-m-y', strtotime($item->tanggal_masuk)) }}</td>
                         <td>{{ date('d-m-y', strtotime($item->tanggal_akhir)) }}</td>
                         <td>{{ $item->status_pesanan }}</td>

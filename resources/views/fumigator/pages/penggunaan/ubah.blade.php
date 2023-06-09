@@ -26,9 +26,16 @@
                             <option disable value>pilih persediaan</option>
                             <option value="{{ $pen->id_persediaan }}">{{ $pen->persediaan->nama_persediaan }}</option>
                             @foreach ($dbpersediaan as $item)
-                            <option value="{{ $item->id }}" {{ $item->persediaan->id == $item->id ? ' selected ':'' }}>{{ $item->nama_persediaan }}</option>
+                            <option value="{{ $item->id }}" {{ $pen->persediaan->id == $item->id ? ' selected ':'' }}>{{ $item->nama_persediaan }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="example-date-input" class="col-md-2 col-form-label">Jumlah Penggunaan Persediaan</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" id="jumlah_penggunaan" name="jumlah_penggunaan" value="{{ $pen->jumlah_penggunaan }}"
+                                id="example-date-input">
+                        </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="example-date-input" class="col-md-2 col-form-label">Tanggal Masuk Pesanan</label>

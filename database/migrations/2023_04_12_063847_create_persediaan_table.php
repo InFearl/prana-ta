@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('persediaan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_persediaan');
-            $table->integer('jumlah_persediaan');
+            $table->integer('jumlah_persediaan')->default(0);
+            $table->integer('rop')->default(0);
+            $table->integer('biaya_penyimpanan')->default(0);
+            $table->integer('safety_stock')->default(0);
             $table->timestamps();
         });
     }

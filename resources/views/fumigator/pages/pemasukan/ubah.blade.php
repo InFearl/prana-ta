@@ -22,6 +22,22 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-3 row">
+                        <select class="form-control select2" style="width: 100%;" name="id_persediaan" id="id_persediaan">
+                            <option disable value>pilih persediaan</option>
+                            <option value="{{ $pem->id_persediaan }}">{{ $pem->persediaan->nama_persediaan }}</option>
+                            @foreach ($dbpersediaan as $item)
+                            <option value="{{ $item->id }}" {{ $pem->persediaan->id == $item->id ? ' selected ':'' }}>{{ $item->nama_persediaan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="example-date-input" class="col-md-2 col-form-label">Jumlah Pemasukan Persediaan</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" id="jumlah_pemasukan" name="jumlah_pemasukan" value="{{ $pem->jumlah_pemasukan }}"
+                                id="example-date-input">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="example-date-input" class="col-md-2 col-form-label">Tanggal Pemasukan Persediaan</label>
                         <div class="col-md-10">
                             <input class="form-control" type="date" id="tanggal_pemasukan" name="tanggal_pemasukan" value="{{ $pem->tanggal_pemasukan }}"

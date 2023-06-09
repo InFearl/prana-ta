@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Penggunaan;
 use App\Models\Persediaan;
 use Illuminate\Http\Request;
+use App\Models\DetailPenggunaan;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PenggunaanController extends Controller
 {
@@ -19,14 +23,23 @@ class PenggunaanController extends Controller
         return view('fumigator.pages.penggunaan.index',compact('dbpenggunaan'));
     }
 
+    public function cetakpenggunaan()
+    {
+        $dbcetakpenggunaan = Penggunaan::with('persediaan')->get();
+        return view('fumigator.pages.penggunaan.cetak',compact('dbcetakpenggunaan'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $dbpersediaan = Persediaan::all();
-        return view('fumigator.pages.penggunaan.tambah',compact('dbpersediaan'));
+        
+    {   
+        $temporary_penggunaan = session("temporary_penggunaan");
+        $dbpersediaan = Persediaan::all();
+        return view('fumigator.pages.penggunaan.tambah',compact('dbpersediaan','temporary_penggunaan'));
     }
 
     /**
@@ -37,14 +50,51 @@ class PenggunaanController extends Controller
      */
     public function store(Request $request)
     {
-        Penggunaan::create([
-            'id_persediaan'=> $request->id_persediaan,
-            'tanggal_penggunaan'=> $request->tanggal_penggunaan,
-        ]);
+        $dbpenggunaan = Penggunaan::create([
+            'tanggal_penggunaan'=> Carbon::now(),
+            'jumlah_penggunaan'=> Carbon::now(),
+        ]);             
+
+        $temporary_penggunaan = session("temporary_penggunaan");
+        foreach ($temporary_penggunaan as $temp) {
+            DetailPenggunaan::create([
+                'id_penggunaan' => $dbpenggunaan->id,
+                'id_persediaan' => $temp['id'],
+                'jumlah_penggunaan' => $temp['jumlah_penggunaan']
+            ]);
+        }
+        session()->forget("temporary_penggunaan");
+        // $persediaan = Persediaan::where('id', $request->id_persediaan)->first();
+        
+        // $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan - $request->jumlah_penggunaan;
+        
+        // $persediaan->save();
 
         return redirect('penggunaan')->with('toast_success', 'Data Berhasil Ditambah');
     }
 
+    public function addListPenggunaan(Request $request)
+    {
+        $this->validate($request, [
+            'id_persediaan' => 'required',
+            'jumlah_penggunaan' => 'required'
+        ]);
+        $dbpersediaan = DB::table('persediaan')
+            ->where('id', $request->id_persediaan)
+            ->first();
+
+        $temporary_penggunaan = session("temporary_penggunaan");
+
+        $temporary_penggunaan[$request->id_persediaan] = [
+            "id" => $request->id_persediaan,
+            "nama_persediaan" => $dbpersediaan->nama_persediaan,
+            "jumlah_penggunaan" => $request->jumlah_penggunaan
+        ];
+
+        session(["temporary_penggunaan" => $temporary_penggunaan]);
+
+        return redirect()->route('tambah.penggunaan');
+    }
     /**
      * Display the specified resource.
      *
@@ -78,7 +128,18 @@ class PenggunaanController extends Controller
     public function update(Request $request, $id)
     {
         $pen = Penggunaan::findorfail($id);
-        $pen->update($request->all());
+        // $pen->update($request->all());
+
+        $persediaan = Persediaan::where('id', $request->id_persediaan)->first();
+        
+        $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan + $pen->jumlah_penggunaan - $request->jumlah_penggunaan;
+        
+        $persediaan->save();
+
+        $pen->jumlah_penggunaan = $request->jumlah_penggunaan;
+
+        $pen->save();
+
         return redirect('penggunaan')->with('toast_success', 'Data Berhasil Diubah');
     }
 

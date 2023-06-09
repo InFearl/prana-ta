@@ -30,15 +30,9 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="example-number-input" class="col-md-2 col-form-label">20ft</label>
+                        <label for="example-number-input" class="col-md-2 col-form-label">container</label>
                         <div class="col-md-10">
-                            <input class="form-control" type="number" id="c20ft" name="c20ft" placeholder="Jumlah Container 20ft" id="example-number-input">
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="example-number-input" class="col-md-2 col-form-label">40ft</label>
-                        <div class="col-md-10">
-                            <input class="form-control" type="number" id="c40ft" name="c40ft" placeholder="Jumlah Container 40ft" id="example-number-input">
+                            <input class="form-control" type="number" id="container" name="container" placeholder="Jumlah Container" id="example-number-input">
                         </div>
                     </div>
                     <div class="mb-3 row">

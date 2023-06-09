@@ -9,9 +9,8 @@
 
 <h1 class="h3 mb-2 text-gray-800">Pemasukan Persediaan</h1>
     	<div >
-            <a href="{{ route('tambah.pemasukan') }}" class="btn btn-success" 
-            ><i class="fas fa-plus"></i><span>Tambah</span></a>
-        <button type="button" class="btn btn-success">Cetak</button>
+            <a href="{{ route('tambah.pemasukan') }}" class="btn btn-success"><i class="fas fa-plus"></i><span>Tambah</span></a>
+            <a href="{{ route('cetak.pemasukan') }}" target="_blank" class="btn btn-success" ><i class="fas fa-print"></i><span>Cetak</span></a>
         </div>
 
 <!-- DataTales Example -->
@@ -22,6 +21,8 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Nama Persediaan</th>
+                        <th>Jumlah Penggunaan</th>
                         <th>Tanggal Masuk Persediaan</th>
                         <th>Biaya</th>
                         <th>Aksi</th>
@@ -30,6 +31,8 @@
                 <tfoot>
                     <tr>
                         <th>Id</th>
+                        <th>Nama Persediaan</th>
+                        <th>Jumlah Penggunaan</th>
                         <th>Tanggal Masuk Persediaan</th>
                         <th>Biaya</th>
                         <th>Aksi</th>
@@ -40,6 +43,8 @@
                         
                     <tr>
                         <td>{{ $item->id}}</td>
+                        <td>{{ $item->persediaan->nama_persediaan ?? 'kosong'}}</td>
+                        <td>{{ $item->jumlah_pemasukan}}</td>
                         <td>{{ date('d-m-y', strtotime($item->tanggal_pemasukan)) }}</td>
                         <td>{{ $item->biaya_total}}</td>
                         <td>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pesanan;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
+use App\Models\Persediaan;
 
-class PesananController extends Controller
+class PemesananController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,14 +14,12 @@ class PesananController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $dbpesanan = Pesanan::latest()->paginate(5);
-        return view('fumigator.pages.pesanan.index',compact('dbpesanan'));
+    { 
+        $dbpersediaan = Persediaan::all();
+        $dbpemesanan = Pemesanan::with('persediaan')->get();
+        return view('fumigator.pages.pemesanan.index', compact('dbpemesanan','dbpersediaan'));
     }
-    
-    public function cetakpesanan()
-    {   $dbcetakpesanan = Pesanan::get();
-        return view('fumigator.pages.pesanan.cetak',compact('dbcetakpesanan'));
-    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +27,9 @@ class PesananController extends Controller
      */
     public function create()
     {
-        return view('fumigator.pages.pesanan.tambah',);
+        $dbpersediaan = Persediaan::all();
+        $dbpemesanan = Pemesanan::with('persediaan')->get();
+        return view('fumigator.pages.pemesanan.tambah',compact('dbpersediaan','dbpemesanan'));
     }
 
     /**
@@ -39,15 +40,7 @@ class PesananController extends Controller
      */
     public function store(Request $request)
     {
-        Pesanan::create([
-            'nama_perusahaan'=> $request->nama_perusahaan,
-            'container'=> $request->container,
-            'tanggal_masuk'=> $request->tanggal_masuk,
-            'tanggal_akhir'=> $request->tanggal_akhir,
-            'status_pesanan'=> $request->status_pesanan,
-        ]);
-
-        return redirect('pesanan')->with('toast_success', 'Data Berhasil Ditambah');
+        //
     }
 
     /**
@@ -69,8 +62,7 @@ class PesananController extends Controller
      */
     public function edit($id)
     {
-        $pes = Pesanan::findorfail($id);
-        return view('fumigator.pages.pesanan.ubah',compact('pes'));
+        //
     }
 
     /**
@@ -82,9 +74,7 @@ class PesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pes = Pesanan::findorfail($id);
-        $pes->update($request->all());
-        return redirect('pesanan')->with('toast_success', 'Data Berhasil Diubah');
+        //
     }
 
     /**
@@ -95,8 +85,6 @@ class PesananController extends Controller
      */
     public function destroy($id)
     {
-        $pes = Pesanan::findorfail($id);
-        $pes->delete();
-        return back()->with('info', 'Data Berhasil Dihapus');
+        //
     }
 }

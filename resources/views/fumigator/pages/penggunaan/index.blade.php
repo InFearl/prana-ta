@@ -10,9 +10,8 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Penggunaan Persediaan</h1>
     	<div >
-            <a href="{{ route('tambah.penggunaan') }}" class="btn btn-success" 
-            ><i class="fas fa-plus"></i><span>Tambah</span></a>
-        <button type="button" class="btn btn-success">Cetak</button>
+            <a href="{{ route('tambah.penggunaan') }}" class="btn btn-success" ><i class="fas fa-plus"></i><span>Tambah</span></a>
+            <a href="{{ route('cetak.penggunaan') }}" target="_blank" class="btn btn-success" ><i class="fas fa-print"></i><span>Cetak</span></a>
         </div>
 
 <!-- DataTales Example -->
@@ -24,6 +23,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Nama Persediaan</th>
+                        <th>Jumlah Penggunaan</th>
                         <th>Tanggal Penggunaan Persediaan</th>
                         <th>Aksi</th>
                     </tr>
@@ -32,6 +32,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Nama Persediaan</th>
+                        <th>Jumlah Penggunaan</th>
                         <th>Tanggal Penggunaan Persediaan</th>
                         <th>Aksi</th>
                     </tr>
@@ -42,6 +43,7 @@
                     <tr>
                         <td>{{ $item->id}}</td>
                         <td>{{ $item->persediaan->nama_persediaan ?? 'kosong'}}</td>
+                        <td>{{ $item->jumlah_penggunaan}}</td>
                         <td>{{ date('d-m-y', strtotime($item->tanggal_penggunaan)) }}</td>
                         <td>
                             <a href="{{ url('ubah.penggunaan', $item->id) }}" class="btn btn-info btn-circle btn-sm">

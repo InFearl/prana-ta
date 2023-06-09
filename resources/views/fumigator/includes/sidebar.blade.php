@@ -48,6 +48,10 @@
                 <a class="nav-link" href="/pemasukan">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Pemasukan</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/pemesanan">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Pemesanan</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

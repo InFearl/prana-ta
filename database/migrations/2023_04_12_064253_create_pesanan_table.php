@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_perusahaan');
-            $table->integer('c20ft');
-            $table->integer('c40ft');
+            $table->integer('container')->default(0);
             $table->date('tanggal_masuk');
             $table->date('tanggal_akhir');
-            $table->string('status_pesanan');
+            $table->string('status_pesanan')->default('Dalam Proses');
             $table->timestamps();
         });
     }

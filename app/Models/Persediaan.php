@@ -15,6 +15,9 @@ class Persediaan extends Model
     ];
 
     protected $primaryKey = 'id';
-    public function penggunaan(){
-        return $this->hasMany(penggunaan::class,'id');
+    
+    public function detailpenggunaan(){
+        return $this->hasMany(DetailPenggunaan::class,'id');
     }}
+
+    

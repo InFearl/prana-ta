@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('perhitungan', function (Blueprint $table) {
             $table->id();
-            $table->integer('demand');
-            $table->integer('max_demand');
-            $table->integer('safety_stock');
-            $table->integer('lead_time');
-            $table->integer('biaya_pesan');
-            $table->integer('biaya_penyimpanan');
-            $table->integer('EOQ');
-            $table->integer('ROP');
+            $table->integer('demand')->default(0);
+            $table->integer('max_demand')->default(0);
+            $table->integer('safety_stock')->default(0);
+            $table->integer('lead_time')->default(0);
+            $table->integer('biaya_pesan')->default(0);
+            $table->integer('biaya_penyimpanan')->default(0);
+            $table->integer('EOQ')->default(0);
+            $table->integer('ROP')->default(0);
             $table->timestamps();
         });
     }
