@@ -11,7 +11,7 @@ class Penggunaan extends Model
     protected $table = 'penggunaan';
 
     protected $fillable = [
-        'id_persediaan', 'tanggal_penggunaan', 'jumlah_penggunaan'
+        'tanggal_penggunaan'
     ];
 
     protected $primaryKey = 'id';

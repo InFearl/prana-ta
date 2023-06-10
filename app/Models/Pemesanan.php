@@ -20,4 +20,9 @@ class Pemesanan extends Model
         return $this->belongsTo(Persediaan::class,'id_persediaan');
     }
 
+    public function detailpemesanan()
+    {
+        return $this->hasMany(DetailPemesanan::class, 'id');
+    }
+
 }

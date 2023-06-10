@@ -22,17 +22,19 @@ use GuzzleHttp\Middleware;
 */
 
 route::controller(DashboardController::class)->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', 'index')->name('dashboard');
 });
 
 route::controller(PemasukanController::class)->group(function () {
-    Route::get('/pemasukan', [PemasukanController::class, 'index'])->name('pemasukan');
-    Route::get('/tambah.pemasukan', [PemasukanController::class, 'create'])->name('tambah.pemasukan');
-    Route::post('/simpan.pemasukan', [PemasukanController::class, 'store'])->name('simpan.pemasukan');
-    Route::get('/ubah.pemasukan/{id}', [PemasukanController::class, 'edit'])->name('ubah.pemasukan');
-    Route::post('/update.pemasukan/{id}', [PemasukanController::class, 'update'])->name('update.pemasukan');
-    Route::get('/delete.pemasukan/{id}', [PemasukanController::class, 'destroy'])->name('delete.pemasukan');
-    Route::get('/cetak.pemasukan', [PemasukanController::class, 'cetakpemasukan'])->name('cetak.pemasukan');
+    Route::get('/pemasukan','index')->name('pemasukan');
+    Route::get('/tambah.pemasukan','create')->name('tambah.pemasukan');
+    Route::get('/simpan.pemasukan', 'store')->name('simpan.pemasukan');
+    Route::get('/ubah.pemasukan/{id}', 'edit')->name('ubah.pemasukan');
+    Route::post('/update.pemasukan/{id}', 'update')->name('update.pemasukan');
+    Route::get('/delete.pemasukan/{id}', 'destroy')->name('delete.pemasukan');
+    Route::get('/cetak.pemasukan', 'cetakpemasukan')->name('cetak.pemasukan');
+    Route::post('/add.pemasukan', 'addListPemasukan')->name('add.pemasukan');
+    Route::get('/show.pemasukan/{id}', 'show')->name('show.pemasukan');
 });
 
 route::controller(PenggunaanController::class)->group(function () {
@@ -52,23 +54,29 @@ route::controller(PersediaanController::class)->group(function () {
 });
 
 route::controller(PemesananController::class)->group(function () {
-    Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan');
-    Route::get('/tambah.pemesanan', [PemesananController::class, 'create'])->name('tambah.pemesanan');
-    Route::post('/simpan.pemesanan', [PemesananController::class, 'store'])->name('simpan.pemesanan');
+    Route::get('/pemesanan', 'index')->name('pemesanan');
+    Route::get('/tambah.pemesanan', 'create')->name('tambah.pemesanan');
+    Route::get('/simpan.pemesanan', 'store')->name('simpan.pemesanan');
+    Route::get('/ubah.pemesanan/{id}', 'edit')->name('ubah.pemesanan');
+    Route::post('/update.pemesanan/{id}', 'update')->name('update.pemesanan');
+    Route::get('/delete.pemesanan/{id}', 'destroy')->name('delete.pemesanan');
+    Route::get('/cetak.pemesanan', 'cetakpemesanan')->name('cetak.pemesanan');
+    Route::post('/add.pemesanan', 'addListPemesanan')->name('add.pemesanan');
+    Route::get('/show.pemesanan/{id}', 'show')->name('show.pemesanan');
 });
 
 route::controller(PesananController::class)->group(function () {
-    Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan');
-    Route::get('/tambah.pesanan', [PesananController::class, 'create'])->name('tambah.pesanan');
-    Route::post('/simpan.pesanan', [PesananController::class, 'store'])->name('simpan.pesanan');
-    Route::get('/ubah.pesanan/{id}', [PesananController::class, 'edit'])->name('ubah.pesanan');
-    Route::post('/update.pesanan/{id}', [PesananController::class, 'update'])->name('update.pesanan');
-    Route::get('/delete.pesanan/{id}', [PesananController::class, 'destroy'])->name('delete.pesanan');
-    Route::get('/cetak.pesanan', [PesananController::class, 'cetakpesanan'])->name('cetak.pesanan');
+    Route::get('/pesanan', 'index')->name('pesanan');
+    Route::get('/tambah.pesanan', 'create')->name('tambah.pesanan');
+    Route::post('/simpan.pesanan', 'store')->name('simpan.pesanan');
+    Route::get('/ubah.pesanan/{id}', 'edit')->name('ubah.pesanan');
+    Route::post('/update.pesanan/{id}', 'update')->name('update.pesanan');
+    Route::get('/delete.pesanan/{id}', 'destroy')->name('delete.pesanan');
+    Route::get('/cetak.pesanan', 'cetakpesanan')->name('cetak.pesanan');
 });
 
 route::controller(PersediaanController::class)->group(function () {
-    Route::get('/persediaan', [PersediaanController::class, 'index'])->name('persediaan');
+    Route::get('/persediaan', 'index')->name('persediaan');
 });
 
 

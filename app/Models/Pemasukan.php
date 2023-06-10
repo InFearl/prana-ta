@@ -11,12 +11,17 @@ class Pemasukan extends Model
     protected $table = 'pemasukan';
 
     protected $fillable = [
-        'id_persediaan','biaya_total','tanggal_pemasukan','jumlah_pemasukan'
+        'tanggal_pemasukan'
     ];
 
     protected $primaryKey = 'id';
 
     public function persediaan(){
         return $this->belongsTo(Persediaan::class,'id_persediaan');
+    }
+
+    public function detailpemasukan()
+    {
+        return $this->hasMany(DetailPemasukan::class, 'id');
     }
 }

@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('detail_pemesanan', function (Blueprint $table) {
             $table->id();
-            $table->string('id_pemesanan');
-            $table->string('id_pemasukan');
-            $table->integer('jumlah_pemasukan')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_pemasukan');
+        Schema::dropIfExists('detail_pemesanans');
     }
 };
