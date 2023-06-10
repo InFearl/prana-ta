@@ -95,7 +95,8 @@
                                             {{ $temp['jumlah_pemasukan'] }}
                                         </td>
                                         <td>
-                                            edit
+                                            <a href="{{ route('destroy.pemasukan', ['id' => $temp['id']]) }}"
+                                                class="btn btn-danger">Hapus Ngentot</a>
                                         </td>
                                     </tr>
                                 @endforeach

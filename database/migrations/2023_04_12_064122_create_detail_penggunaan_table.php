@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('detail_penggunaan', function (Blueprint $table) {
             $table->id();
-            $table->string('id_persediaan');
-            $table->string('id_penggunaan');
+            $table->unsignedBigInteger('id_persediaan');
+            $table->unsignedBigInteger('id_penggunaan');
             $table->integer('jumlah_penggunaan')->default(0);
+
             $table->timestamps();
         });
     }

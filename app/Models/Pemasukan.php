@@ -16,10 +16,6 @@ class Pemasukan extends Model
 
     protected $primaryKey = 'id';
 
-    public function persediaan(){
-        return $this->belongsTo(Persediaan::class,'id_persediaan');
-    }
-
     public function detailpemasukan()
     {
         return $this->hasMany(DetailPemasukan::class, 'id');

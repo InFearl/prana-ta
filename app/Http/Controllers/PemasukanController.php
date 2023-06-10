@@ -19,14 +19,14 @@ class PemasukanController extends Controller
      */
     public function index()
     {
-        $dbpemasukan = Pemasukan::with('persediaan')->latest()->paginate(5);
-        return view('fumigator.pages.pemasukan.index',compact('dbpemasukan'));
+        $dbpemasukan = Pemasukan::latest()->paginate(5);
+        return view('fumigator.pages.pemasukan.index', compact('dbpemasukan'));
     }
 
     public function cetakpemasukan()
     {
         $dbcetakpemasukan = Pemasukan::with('persediaan')->get();
-        return view('fumigator.pages.pemasukan.cetak',compact('dbcetakpemasukan'));
+        return view('fumigator.pages.pemasukan.cetak', compact('dbcetakpemasukan'));
     }
     /**
      * Show the form for creating a new resource.
@@ -34,10 +34,10 @@ class PemasukanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $temporary_pemasukan = session("temporary_pemasukan");
         $dbpersediaan = Persediaan::all();
-        return view('fumigator.pages.pemasukan.tambah',compact('dbpersediaan','temporary_pemasukan'));
+        return view('fumigator.pages.pemasukan.tambah', compact('dbpersediaan', 'temporary_pemasukan'));
     }
 
     /**
@@ -79,9 +79,9 @@ class PemasukanController extends Controller
         //Menghapus session 
 
         // $persediaan = Persediaan::where('id', $request->id_persediaan)->first();
-        
+
         // $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan + $request->jumlah_pemasukan;
-        
+
         // $persediaan->save();
 
         return redirect('pemasukan')->with('toast_success', 'Data Berhasil Ditambah');
@@ -145,9 +145,10 @@ class PemasukanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   $dbpersediaan = Persediaan::all();
+    {
+        $dbpersediaan = Persediaan::all();
         $pem = Pemasukan::with('persediaan')->findorfail($id);
-        return view('fumigator.pages.pemasukan.ubah',compact('pem','dbpersediaan'));
+        return view('fumigator.pages.pemasukan.ubah', compact('pem', 'dbpersediaan'));
     }
 
     /**
@@ -162,9 +163,9 @@ class PemasukanController extends Controller
         $pem = Pemasukan::findorfail($id);
         // $pem->update($request->all());
         $persediaan = Persediaan::where('id', $request->id_persediaan)->first();
-        
+
         $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan + $pem->jumlah_pemasukan - $request->jumlah_pemasukan;
-        
+
         $persediaan->save();
 
         $pem->jumlah_pemasukan = $request->jumlah_pemasukan;
@@ -185,5 +186,14 @@ class PemasukanController extends Controller
         $pem = Pemasukan::findorfail($id);
         $pem->delete();
         return back()->with('info', 'Data Berhasil Dihapus');
+    }
+
+
+    public function destroyItemTemp($id_persediaan)
+    {
+        $temporary_pemasukan = session("temporary_pemasukan");
+        unset($temporary_pemasukan[$id_persediaan]);
+        session(["temporary_pemasukan" => $temporary_pemasukan]);
+        return redirect()->route('tambah.pemasukan');
     }
 }

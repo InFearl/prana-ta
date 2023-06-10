@@ -43,9 +43,9 @@
                             @foreach ($dbpemesanan as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->pemesanan->status_pemesanan }}</td>
+                                    <td>{{ $item->status_pemesanan }}</td>
                                     <td>{{ date('d-m-y', strtotime($item->tanggal_pemesanan)) }}</td>
-                                    <td>{{ $item->pemesanan->biaya_pemesanan }}</td>
+                                    <td>{{ $item->biaya_pemesanan }}</td>
                                     <td>
                                         {{-- <a href="{{ url('ubah.penggunaan', $item->id) }}"
                                             class="btn btn-info btn-circle btn-sm">
@@ -67,6 +67,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

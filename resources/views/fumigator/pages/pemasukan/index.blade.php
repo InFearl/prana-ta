@@ -39,7 +39,7 @@
                             @foreach ($dbpemasukan as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ date('d-m-y', strtotime($item->tanggal_pemasukan)) }}</td>
+                                    <td>{{ date('d F Y', strtotime($item->tanggal_pemasukan)) }}</td>
                                     <td>
                                         {{-- <a href="{{ url('ubah.penggunaan', $item->id) }}"
                                             class="btn btn-info btn-circle btn-sm">
@@ -49,9 +49,8 @@
                                             class="btn btn-danger btn-circle btn-sm">
                                             <i class="fas fa-trash"></i>
                                         </a> --}}
-                                        <a href="{{ url('show.pemasukan', $item->id) }}"
-                                            class="btn btn-info btn-circle btn-sm">
-                                            <i class="fas fa-info-circle"></i>Detail
+                                        <a href="{{ url('show.pemasukan', $item->id) }}" class="btn btn-info">
+                                            <i class="fas fa-info-circle"></i> Detail
                                         </a>
                                     </td>
                                 </tr>

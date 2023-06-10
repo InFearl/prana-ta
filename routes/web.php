@@ -26,8 +26,8 @@ route::controller(DashboardController::class)->group(function () {
 });
 
 route::controller(PemasukanController::class)->group(function () {
-    Route::get('/pemasukan','index')->name('pemasukan');
-    Route::get('/tambah.pemasukan','create')->name('tambah.pemasukan');
+    Route::get('/pemasukan', 'index')->name('pemasukan');
+    Route::get('/tambah.pemasukan', 'create')->name('tambah.pemasukan');
     Route::get('/simpan.pemasukan', 'store')->name('simpan.pemasukan');
     Route::get('/ubah.pemasukan/{id}', 'edit')->name('ubah.pemasukan');
     Route::post('/update.pemasukan/{id}', 'update')->name('update.pemasukan');
@@ -35,6 +35,7 @@ route::controller(PemasukanController::class)->group(function () {
     Route::get('/cetak.pemasukan', 'cetakpemasukan')->name('cetak.pemasukan');
     Route::post('/add.pemasukan', 'addListPemasukan')->name('add.pemasukan');
     Route::get('/show.pemasukan/{id}', 'show')->name('show.pemasukan');
+    Route::get('/destroy.pemasukan/{id}', 'destroyItemTemp')->name('destroy.pemasukan');
 });
 
 route::controller(PenggunaanController::class)->group(function () {

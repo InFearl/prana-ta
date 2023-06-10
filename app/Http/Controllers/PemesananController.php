@@ -20,10 +20,10 @@ class PemesananController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
         $dbpersediaan = Persediaan::all();
-        $dbpemesanan = Pemesanan::with('persediaan')->get();
-        return view('fumigator.pages.pemesanan.index', compact('dbpemesanan','dbpersediaan'));
+        $dbpemesanan = Pemesanan::all();
+        return view('fumigator.pages.pemesanan.index', compact('dbpemesanan', 'dbpersediaan'));
     }
 
     /**
@@ -33,9 +33,10 @@ class PemesananController extends Controller
      */
     public function create()
     {
+        // session()->forget("temporary_pemesanan");
         $temporary_pemesanan = session("temporary_pemesanan");
         $dbpersediaan = Persediaan::all();
-        return view('fumigator.pages.pemesanan.tambah',compact('dbpersediaan','temporary_pemesanan'));
+        return view('fumigator.pages.pemesanan.tambah', compact('dbpersediaan', 'temporary_pemesanan'));
     }
 
     /**
@@ -77,9 +78,9 @@ class PemesananController extends Controller
         //Menghapus session 
 
         // $persediaan = Persediaan::where('id', $request->id_persediaan)->first();
-        
+
         // $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan + $request->jumlah_pemasukan;
-        
+
         // $persediaan->save();
 
         return redirect('pemesanan')->with('toast_success', 'Data Berhasil Ditambah');
@@ -90,7 +91,6 @@ class PemesananController extends Controller
         // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
         $request->validate([
             'id_persediaan' => 'required',
-            'jumlah_pemesanan' => 'required'
         ]);
         // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
 
@@ -112,7 +112,8 @@ class PemesananController extends Controller
         $temporary_pemesanan[$request->id_persediaan] = [
             "id" => $request->id_persediaan,
             "nama_persediaan" => $dbpersediaan->nama_persediaan,
-            "jumlah_pemesanan" => $request->jumlah_pemesanan
+            "jumlah_pemesanan" => 0,
+            "eoq" => 0
         ];
         // Memasukkan data array ke variabel session dengan id persediaan sebagai key
 
@@ -146,7 +147,7 @@ class PemesananController extends Controller
     {
         $dbpersediaan = Persediaan::all();
         $peme = Pemesanan::with('persediaan')->findorfail($id);
-        return view('fumigator.pages.pemasukan.ubah',compact('peme','dbpersediaan'));
+        return view('fumigator.pages.pemasukan.ubah', compact('peme', 'dbpersediaan'));
     }
 
     /**
@@ -161,9 +162,9 @@ class PemesananController extends Controller
         $peme = Pemesanan::findorfail($id);
         // $pem->update($request->all());
         // $persediaan = Persediaan::where('id', $request->id_persediaan)->first();
-        
+
         // $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan + $peme->jumlah_pemasukan - $request->jumlah_pemesanan;
-        
+
         // $persediaan->save();
 
         // $peme->jumlah_pemesanan = $request->jumlah_pemesanan;
@@ -184,5 +185,12 @@ class PemesananController extends Controller
         $peme = Pemesanan::findorfail($id);
         $peme->delete();
         return back()->with('info', 'Data Berhasil Dihapus');
+    }
+
+    public function hitungEOQ(Request $request)
+    {
+        $request->validate([
+            'biaya_pemesanan' => 'required',
+        ]);
     }
 }
