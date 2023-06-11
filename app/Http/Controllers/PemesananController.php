@@ -187,6 +187,14 @@ class PemesananController extends Controller
         return back()->with('info', 'Data Berhasil Dihapus');
     }
 
+    public function destroyItemTemp($id_persediaan)
+    {
+        $temporary_pemesanan = session("temporary_pemesanan");
+        unset($temporary_pemesanan[$id_persediaan]);
+        session(["temporary_pemesanan" => $temporary_pemesanan]);
+        return redirect()->route('tambah.pemesanan');
+    }
+
     public function hitungEOQ(Request $request)
     {
         $request->validate([

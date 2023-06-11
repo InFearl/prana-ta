@@ -96,7 +96,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('destroy.pemasukan', ['id' => $temp['id']]) }}"
-                                                class="btn btn-danger">Hapus Ngentot</a>
+                                                class="btn btn-danger">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach

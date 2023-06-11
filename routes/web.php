@@ -48,6 +48,7 @@ route::controller(PenggunaanController::class)->group(function () {
     Route::get('/cetak.penggunaan', 'cetakpenggunaan')->name('cetak.penggunaan');
     Route::post('/add.penggunaan', 'addListPenggunaan')->name('add.penggunaan');
     Route::get('/show.penggunaan/{id}', 'show')->name('show.penggunaan');
+    Route::get('/destroy.penggunaan/{id}', 'destroyItemTemp')->name('destroy.penggunaan');
 });
 
 route::controller(PersediaanController::class)->group(function () {
@@ -64,6 +65,8 @@ route::controller(PemesananController::class)->group(function () {
     Route::get('/cetak.pemesanan', 'cetakpemesanan')->name('cetak.pemesanan');
     Route::post('/add.pemesanan', 'addListPemesanan')->name('add.pemesanan');
     Route::get('/show.pemesanan/{id}', 'show')->name('show.pemesanan');
+    Route::get('/destroy.pemesanan/{id}', 'destroyItemTemp')->name('destroy.pemesanan');
+    
 });
 
 route::controller(PesananController::class)->group(function () {

@@ -19,7 +19,7 @@ class PenggunaanController extends Controller
      */
     public function index()
     {
-        $dbpenggunaan = Penggunaan::with(['detailpenggunaan.persediaan'])->latest()->paginate(5);
+        $dbpenggunaan = Penggunaan::with(['detailpenggunaan.persediaan'])->latest()->paginate(20);
         return view('fumigator.pages.penggunaan.index', compact('dbpenggunaan'));
     }
 
@@ -184,5 +184,13 @@ class PenggunaanController extends Controller
         $pen = Penggunaan::findorfail($id);
         $pen->delete();
         return back()->with('info', 'Data Berhasil Dihapus');
+    }
+
+    public function destroyItemTemp($id_persediaan)
+    {
+        $temporary_penggunaan = session("temporary_penggunaan");
+        unset($temporary_penggunaan[$id_persediaan]);
+        session(["temporary_penggunaan" => $temporary_penggunaan]);
+        return redirect()->route('tambah.penggunaan');
     }
 }

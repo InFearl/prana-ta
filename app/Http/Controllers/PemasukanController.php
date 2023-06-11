@@ -19,7 +19,7 @@ class PemasukanController extends Controller
      */
     public function index()
     {
-        $dbpemasukan = Pemasukan::latest()->paginate(5);
+        $dbpemasukan = Pemasukan::all();
         return view('fumigator.pages.pemasukan.index', compact('dbpemasukan'));
     }
 
