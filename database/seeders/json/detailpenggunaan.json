@@ -1,0 +1,1046 @@
+[
+    {
+        "id": "1",
+        "id_persediaan": "1",
+        "id_penggunaan": "1",
+        "jumlah_penggunaan": "48"
+    },
+    {
+        "id": "2",
+        "id_persediaan": "2",
+        "id_penggunaan": "1",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "3",
+        "id_persediaan": "1",
+        "id_penggunaan": "2",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "4",
+        "id_persediaan": "2",
+        "id_penggunaan": "2",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "5",
+        "id_persediaan": "3",
+        "id_penggunaan": "2",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "6",
+        "id_persediaan": "1",
+        "id_penggunaan": "3",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "7",
+        "id_persediaan": "2",
+        "id_penggunaan": "3",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "8",
+        "id_persediaan": "1",
+        "id_penggunaan": "4",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "9",
+        "id_persediaan": "2",
+        "id_penggunaan": "4",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "10",
+        "id_persediaan": "3",
+        "id_penggunaan": "4",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "11",
+        "id_persediaan": "1",
+        "id_penggunaan": "5",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "12",
+        "id_persediaan": "2",
+        "id_penggunaan": "5",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "13",
+        "id_persediaan": "4",
+        "id_penggunaan": "5",
+        "jumlah_penggunaan": "6"
+    },
+    {
+        "id": "14",
+        "id_persediaan": "1",
+        "id_penggunaan": "6",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "15",
+        "id_persediaan": "2",
+        "id_penggunaan": "6",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "16",
+        "id_persediaan": "3",
+        "id_penggunaan": "6",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "17",
+        "id_persediaan": "6",
+        "id_penggunaan": "6",
+        "jumlah_penggunaan": "50"
+    },
+    {
+        "id": "18",
+        "id_persediaan": "1",
+        "id_penggunaan": "7",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "19",
+        "id_persediaan": "2",
+        "id_penggunaan": "7",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "20",
+        "id_persediaan": "1",
+        "id_penggunaan": "8",
+        "jumlah_penggunaan": "40"
+    },
+    {
+        "id": "21",
+        "id_persediaan": "2",
+        "id_penggunaan": "8",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "23",
+        "id_persediaan": "3",
+        "id_penggunaan": "8",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "24",
+        "id_persediaan": "1",
+        "id_penggunaan": "9",
+        "jumlah_penggunaan": "42"
+    },
+    {
+        "id": "25",
+        "id_persediaan": "2",
+        "id_penggunaan": "9",
+        "jumlah_penggunaan": "1"
+    },
+    {
+        "id": "26",
+        "id_persediaan": "1",
+        "id_penggunaan": "10",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "27",
+        "id_persediaan": "2",
+        "id_penggunaan": "10",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "28",
+        "id_persediaan": "3",
+        "id_penggunaan": "10",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "29",
+        "id_persediaan": "4",
+        "id_penggunaan": "10",
+        "jumlah_penggunaan": "8"
+    },
+    {
+        "id": "30",
+        "id_persediaan": "1",
+        "id_penggunaan": "11",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "31",
+        "id_persediaan": "2",
+        "id_penggunaan": "11",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "32",
+        "id_persediaan": "1",
+        "id_penggunaan": "12",
+        "jumlah_penggunaan": "48"
+    },
+    {
+        "id": "33",
+        "id_persediaan": "2",
+        "id_penggunaan": "12",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "34",
+        "id_persediaan": "3",
+        "id_penggunaan": "12",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "35",
+        "id_persediaan": "6",
+        "id_penggunaan": "12",
+        "jumlah_penggunaan": "60"
+    },
+    {
+        "id": "36",
+        "id_persediaan": "1",
+        "id_penggunaan": "13",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "37",
+        "id_persediaan": "2",
+        "id_penggunaan": "13",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "38",
+        "id_persediaan": "1",
+        "id_penggunaan": "14",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "39",
+        "id_persediaan": "2",
+        "id_penggunaan": "14",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "40",
+        "id_persediaan": "3",
+        "id_penggunaan": "14",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "41",
+        "id_persediaan": "1",
+        "id_penggunaan": "15",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "42",
+        "id_persediaan": "2",
+        "id_penggunaan": "15",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "43",
+        "id_persediaan": "1",
+        "id_penggunaan": "16",
+        "jumlah_penggunaan": "40"
+    },
+    {
+        "id": "44",
+        "id_persediaan": "2",
+        "id_penggunaan": "16",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "45",
+        "id_persediaan": "3",
+        "id_penggunaan": "16",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "46",
+        "id_persediaan": "5",
+        "id_penggunaan": "16",
+        "jumlah_penggunaan": "120"
+    },
+    {
+        "id": "47",
+        "id_persediaan": "1",
+        "id_penggunaan": "17",
+        "jumlah_penggunaan": "41"
+    },
+    {
+        "id": "48",
+        "id_persediaan": "2",
+        "id_penggunaan": "17",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "49",
+        "id_persediaan": "1",
+        "id_penggunaan": "18",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "50",
+        "id_persediaan": "2",
+        "id_penggunaan": "18",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "51",
+        "id_persediaan": "3",
+        "id_penggunaan": "18",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "52",
+        "id_persediaan": "1",
+        "id_penggunaan": "19",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "53",
+        "id_persediaan": "2",
+        "id_penggunaan": "19",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "54",
+        "id_persediaan": "4",
+        "id_penggunaan": "19",
+        "jumlah_penggunaan": "10"
+    },
+    {
+        "id": "55",
+        "id_persediaan": "1",
+        "id_penggunaan": "20",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "56",
+        "id_persediaan": "2",
+        "id_penggunaan": "20",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "57",
+        "id_persediaan": "3",
+        "id_penggunaan": "20",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "58",
+        "id_persediaan": "1",
+        "id_penggunaan": "21",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "59",
+        "id_persediaan": "2",
+        "id_penggunaan": "21",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "60",
+        "id_persediaan": "6",
+        "id_penggunaan": "21",
+        "jumlah_penggunaan": "60"
+    },
+    {
+        "id": "61",
+        "id_persediaan": "1",
+        "id_penggunaan": "22",
+        "jumlah_penggunaan": "41"
+    },
+    {
+        "id": "62",
+        "id_persediaan": "2",
+        "id_penggunaan": "22",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "63",
+        "id_persediaan": "3",
+        "id_penggunaan": "22",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "64",
+        "id_persediaan": "1",
+        "id_penggunaan": "23",
+        "jumlah_penggunaan": "40"
+    },
+    {
+        "id": "65",
+        "id_persediaan": "2",
+        "id_penggunaan": "23",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "66",
+        "id_persediaan": "1",
+        "id_penggunaan": "24",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "67",
+        "id_persediaan": "2",
+        "id_penggunaan": "24",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "68",
+        "id_persediaan": "3",
+        "id_penggunaan": "24",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "69",
+        "id_persediaan": "1",
+        "id_penggunaan": "25",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "70",
+        "id_persediaan": "2",
+        "id_penggunaan": "25",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "71",
+        "id_persediaan": "1",
+        "id_penggunaan": "26",
+        "jumlah_penggunaan": "48"
+    },
+    {
+        "id": "72",
+        "id_persediaan": "2",
+        "id_penggunaan": "26",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "73",
+        "id_persediaan": "3",
+        "id_penggunaan": "26",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "74",
+        "id_persediaan": "1",
+        "id_penggunaan": "27",
+        "jumlah_penggunaan": "48"
+    },
+    {
+        "id": "75",
+        "id_persediaan": "2",
+        "id_penggunaan": "27",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "76",
+        "id_persediaan": "1",
+        "id_penggunaan": "28",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "77",
+        "id_persediaan": "2",
+        "id_penggunaan": "28",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "78",
+        "id_persediaan": "3",
+        "id_penggunaan": "28",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "79",
+        "id_persediaan": "1",
+        "id_penggunaan": "29",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "80",
+        "id_persediaan": "2",
+        "id_penggunaan": "29",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "81",
+        "id_persediaan": "1",
+        "id_penggunaan": "30",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "82",
+        "id_persediaan": "2",
+        "id_penggunaan": "30",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "83",
+        "id_persediaan": "3",
+        "id_penggunaan": "30",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "84",
+        "id_persediaan": "1",
+        "id_penggunaan": "31",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "85",
+        "id_persediaan": "2",
+        "id_penggunaan": "31",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "86",
+        "id_persediaan": "4",
+        "id_penggunaan": "31",
+        "jumlah_penggunaan": "6"
+    },
+    {
+        "id": "87",
+        "id_persediaan": "1",
+        "id_penggunaan": "32",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "88",
+        "id_persediaan": "2",
+        "id_penggunaan": "32",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "89",
+        "id_persediaan": "3",
+        "id_penggunaan": "32",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "90",
+        "id_persediaan": "6",
+        "id_penggunaan": "32",
+        "jumlah_penggunaan": "50"
+    },
+    {
+        "id": "91",
+        "id_persediaan": "1",
+        "id_penggunaan": "33",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "92",
+        "id_persediaan": "2",
+        "id_penggunaan": "33",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "93",
+        "id_persediaan": "1",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "94",
+        "id_persediaan": "2",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "95",
+        "id_persediaan": "3",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "96",
+        "id_persediaan": "1",
+        "id_penggunaan": "35",
+        "jumlah_penggunaan": "42"
+    },
+    {
+        "id": "97",
+        "id_persediaan": "2",
+        "id_penggunaan": "35",
+        "jumlah_penggunaan": "1"
+    },
+    {
+        "id": "98",
+        "id_persediaan": "1",
+        "id_penggunaan": "36",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "99",
+        "id_persediaan": "2",
+        "id_penggunaan": "36",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "100",
+        "id_persediaan": "3",
+        "id_penggunaan": "36",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "101",
+        "id_persediaan": "4",
+        "id_penggunaan": "36",
+        "jumlah_penggunaan": "8"
+    },
+    {
+        "id": "102",
+        "id_persediaan": "5",
+        "id_penggunaan": "36",
+        "jumlah_penggunaan": "120"
+    },
+    {
+        "id": "103",
+        "id_persediaan": "1",
+        "id_penggunaan": "37",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "104",
+        "id_persediaan": "2",
+        "id_penggunaan": "37",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "105",
+        "id_persediaan": "1",
+        "id_penggunaan": "38",
+        "jumlah_penggunaan": "48"
+    },
+    {
+        "id": "106",
+        "id_persediaan": "2",
+        "id_penggunaan": "38",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "107",
+        "id_persediaan": "3",
+        "id_penggunaan": "38",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "108",
+        "id_persediaan": "6",
+        "id_penggunaan": "38",
+        "jumlah_penggunaan": "60"
+    },
+    {
+        "id": "109",
+        "id_persediaan": "1",
+        "id_penggunaan": "39",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "110",
+        "id_persediaan": "2",
+        "id_penggunaan": "39",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "111",
+        "id_persediaan": "1",
+        "id_penggunaan": "40",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "112",
+        "id_persediaan": "2",
+        "id_penggunaan": "40",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "113",
+        "id_persediaan": "3",
+        "id_penggunaan": "40",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "114",
+        "id_persediaan": "1",
+        "id_penggunaan": "41",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "115",
+        "id_persediaan": "2",
+        "id_penggunaan": "41",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "116",
+        "id_persediaan": "1",
+        "id_penggunaan": "42",
+        "jumlah_penggunaan": "40"
+    },
+    {
+        "id": "117",
+        "id_persediaan": "2",
+        "id_penggunaan": "42",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "118",
+        "id_persediaan": "3",
+        "id_penggunaan": "42",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "119",
+        "id_persediaan": "5",
+        "id_penggunaan": "42",
+        "jumlah_penggunaan": "110"
+    },
+    {
+        "id": "120",
+        "id_persediaan": "1",
+        "id_penggunaan": "43",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "121",
+        "id_persediaan": "2",
+        "id_penggunaan": "43",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "122",
+        "id_persediaan": "1",
+        "id_penggunaan": "44",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "123",
+        "id_persediaan": "2",
+        "id_penggunaan": "44",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "124",
+        "id_persediaan": "3",
+        "id_penggunaan": "44",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "125",
+        "id_persediaan": "1",
+        "id_penggunaan": "45",
+        "jumlah_penggunaan": "41"
+    },
+    {
+        "id": "126",
+        "id_persediaan": "2",
+        "id_penggunaan": "45",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "127",
+        "id_persediaan": "1",
+        "id_penggunaan": "46",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "128",
+        "id_persediaan": "2",
+        "id_penggunaan": "46",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "129",
+        "id_persediaan": "3",
+        "id_penggunaan": "46",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "130",
+        "id_persediaan": "1",
+        "id_penggunaan": "47",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "131",
+        "id_persediaan": "2",
+        "id_penggunaan": "47",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "132",
+        "id_persediaan": "4",
+        "id_penggunaan": "47",
+        "jumlah_penggunaan": "10"
+    },
+    {
+        "id": "133",
+        "id_persediaan": "1",
+        "id_penggunaan": "48",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "134",
+        "id_persediaan": "2",
+        "id_penggunaan": "48",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "135",
+        "id_persediaan": "3",
+        "id_penggunaan": "48",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "136",
+        "id_persediaan": "1",
+        "id_penggunaan": "49",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "137",
+        "id_persediaan": "2",
+        "id_penggunaan": "49",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "138",
+        "id_persediaan": "6",
+        "id_penggunaan": "49",
+        "jumlah_penggunaan": "70"
+    },
+    {
+        "id": "139",
+        "id_persediaan": "1",
+        "id_penggunaan": "50",
+        "jumlah_penggunaan": "51"
+    },
+    {
+        "id": "140",
+        "id_persediaan": "2",
+        "id_penggunaan": "50",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "141",
+        "id_persediaan": "3",
+        "id_penggunaan": "50",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "142",
+        "id_persediaan": "1",
+        "id_penggunaan": "51",
+        "jumlah_penggunaan": "40"
+    },
+    {
+        "id": "143",
+        "id_persediaan": "2",
+        "id_penggunaan": "51",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "144",
+        "id_persediaan": "1",
+        "id_penggunaan": "52",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "145",
+        "id_persediaan": "2",
+        "id_penggunaan": "52",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "146",
+        "id_persediaan": "4",
+        "id_penggunaan": "52",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "147",
+        "id_persediaan": "1",
+        "id_penggunaan": "53",
+        "jumlah_penggunaan": "43"
+    },
+    {
+        "id": "148",
+        "id_persediaan": "2",
+        "id_penggunaan": "53",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "149",
+        "id_persediaan": "1",
+        "id_penggunaan": "54",
+        "jumlah_penggunaan": "48"
+    },
+    {
+        "id": "150",
+        "id_persediaan": "2",
+        "id_penggunaan": "54",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "151",
+        "id_persediaan": "3",
+        "id_penggunaan": "54",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "152",
+        "id_persediaan": "1",
+        "id_penggunaan": "55",
+        "jumlah_penggunaan": "48"
+    },
+    {
+        "id": "153",
+        "id_persediaan": "2",
+        "id_penggunaan": "55",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "154",
+        "id_persediaan": "1",
+        "id_penggunaan": "56",
+        "jumlah_penggunaan": "47"
+    },
+    {
+        "id": "155",
+        "id_persediaan": "2",
+        "id_penggunaan": "56",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "156",
+        "id_persediaan": "3",
+        "id_penggunaan": "56",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "157",
+        "id_persediaan": "1",
+        "id_penggunaan": "57",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "158",
+        "id_persediaan": "2",
+        "id_penggunaan": "57",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "159",
+        "id_persediaan": "1",
+        "id_penggunaan": "58",
+        "jumlah_penggunaan": "46"
+    },
+    {
+        "id": "160",
+        "id_persediaan": "2",
+        "id_penggunaan": "58",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "161",
+        "id_persediaan": "3",
+        "id_penggunaan": "58",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "163",
+        "id_persediaan": "1",
+        "id_penggunaan": "59",
+        "jumlah_penggunaan": "44"
+    },
+    {
+        "id": "164",
+        "id_persediaan": "2",
+        "id_penggunaan": "59",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "165",
+        "id_persediaan": "4",
+        "id_penggunaan": "59",
+        "jumlah_penggunaan": "10"
+    },
+    {
+        "id": "166",
+        "id_persediaan": "1",
+        "id_penggunaan": "60",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "167",
+        "id_persediaan": "2",
+        "id_penggunaan": "60",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "168",
+        "id_persediaan": "3",
+        "id_penggunaan": "60",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "169",
+        "id_persediaan": "6",
+        "id_penggunaan": "60",
+        "jumlah_penggunaan": "60"
+    },
+    {
+        "id": "170",
+        "id_persediaan": "1",
+        "id_penggunaan": "61",
+        "jumlah_penggunaan": "45"
+    },
+    {
+        "id": "171",
+        "id_persediaan": "2",
+        "id_penggunaan": "61",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "172",
+        "id_persediaan": "1",
+        "id_penggunaan": "62",
+        "jumlah_penggunaan": "40"
+    },
+    {
+        "id": "173",
+        "id_persediaan": "2",
+        "id_penggunaan": "62",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "174",
+        "id_persediaan": "3",
+        "id_penggunaan": "62",
+        "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "175",
+        "id_persediaan": "1",
+        "id_penggunaan": "63",
+        "jumlah_penggunaan": "42"
+    },
+    {
+        "id": "176",
+        "id_persediaan": "2",
+        "id_penggunaan": "63",
+        "jumlah_penggunaan": "1"
+    }
+]
