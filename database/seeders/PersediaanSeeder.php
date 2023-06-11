@@ -28,6 +28,11 @@ class PersediaanSeeder extends Seeder
             'biaya_penyimpanan' => '2000',
         ]);
         Persediaan::create([
+            'nama_persediaan' => 'Cartridge Gas Mask',
+            'jumlah_persediaan' => '50',
+            'biaya_penyimpanan' => '2000',
+        ]);
+        Persediaan::create([
             'nama_persediaan' => 'Plastik Fumigasi',
             'jumlah_persediaan' => '50',
             'biaya_penyimpanan' => '2000',
