@@ -128,7 +128,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" method="post">
+                <form action="{{ route('eoq.pemesanan') }}" method="post">
                     <div class="modal-body">
                         @csrf
                         <div class="col-12">

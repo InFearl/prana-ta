@@ -64,9 +64,9 @@ route::controller(PemesananController::class)->group(function () {
     Route::get('/delete.pemesanan/{id}', 'destroy')->name('delete.pemesanan');
     Route::get('/cetak.pemesanan', 'cetakpemesanan')->name('cetak.pemesanan');
     Route::post('/add.pemesanan', 'addListPemesanan')->name('add.pemesanan');
+    Route::post('/eoq.pemesanan', 'hitungEOQ')->name('eoq.pemesanan');
     Route::get('/show.pemesanan/{id}', 'show')->name('show.pemesanan');
     Route::get('/destroy.pemesanan/{id}', 'destroyItemTemp')->name('destroy.pemesanan');
-    
 });
 
 route::controller(PesananController::class)->group(function () {
