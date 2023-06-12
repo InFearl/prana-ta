@@ -44,7 +44,7 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->status_pemesanan }}</td>
-                                    <td>{{ date('d-m-y', strtotime($item->tanggal_pemesanan)) }}</td>
+                                    <td>{{ date('d F Y', strtotime($item->tanggal_pemesanan)) }}</td>
                                     <td>{{ $item->biaya_pemesanan }}</td>
                                     <td>
                                         {{-- <a href="{{ url('ubah.penggunaan', $item->id) }}"

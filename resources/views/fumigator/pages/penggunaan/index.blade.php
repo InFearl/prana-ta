@@ -39,7 +39,7 @@
                             @foreach ($dbpenggunaan as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ date('d-m-y', strtotime($item->tanggal_penggunaan)) }}</td>
+                                    <td>{{ date('d F Y', strtotime($item->tanggal_penggunaan)) }}</td>
                                     <td>
                                         {{-- <a href="{{ url('ubah.penggunaan', $item->id) }}"
                                             class="btn btn-info btn-circle btn-sm">
