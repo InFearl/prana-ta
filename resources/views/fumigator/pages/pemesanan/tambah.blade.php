@@ -107,6 +107,9 @@
                                         <td>
                                             <a href="{{ route('destroy.pemesanan', ['id' => $temp['id']]) }}"
                                                 class="btn btn-danger">Hapus</a>
+                                            <button class="btn btn-info ubahJumlah" data-toggle="modal"
+                                                data-id="{{ $temp['id'] }}" data-target="#jumlahPemesanan">Edit
+                                                Jumlah</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -148,6 +151,38 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="jumlahPemesanan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">Ubah Jumlah Pemesanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('ubahjumlah.pemesanan') }}" method="post">
+                    <div class="modal-body">
+                        @csrf
+                        <div class="col-12">
+                            <div class="mb-3 row">
+                                <div class="col-md-12">
+                                    <input type="hidden" name="id" id="id">
+                                    <input class="form-control" type="text" id="jumlah_pemesanan_ubah"
+                                        name="jumlah_pemesanan_ubah">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('after-script')
@@ -159,5 +194,9 @@
     <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>
     <script>
         $('#dataTable').DataTable();
+        $('#dataTable').on('click', '.ubahJumlah', function() {
+            let id = $(this).attr('data-id');
+            $('#id').val(id);
+        });
     </script>
 @endpush

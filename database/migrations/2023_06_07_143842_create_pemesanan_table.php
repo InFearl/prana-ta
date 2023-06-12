@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pemesanan', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal_pemesanan');
-            $table->integer('biaya_pemesanan')->default(0);
+            $table->integer('biaya_pemesanan');
             $table->string('status_pemesanan')->default('Menunggu konfirmasi');
             $table->timestamps();
         });

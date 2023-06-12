@@ -20,7 +20,8 @@ class PemesananSeeder extends Seeder
         $datas = json_decode($datas);
         foreach ($datas as $data) {
             Pemesanan::create([
-                'tanggal_pemesanan' => $data->tanggal_pemesanan
+                'tanggal_pemesanan' => $data->tanggal_pemesanan,
+                'biaya_pemesanan' => 0
             ]);
         }
     }

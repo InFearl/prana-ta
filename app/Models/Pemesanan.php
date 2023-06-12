@@ -11,7 +11,7 @@ class Pemesanan extends Model
     protected $table = 'pemesanan';
 
     protected $fillable = [
-        'biaya_total', 'tanggal_pemesanan', 'jumlah_pemesanan', 'status_pemesanan'
+        'biaya_total', 'tanggal_pemesanan', 'biaya_pemesanan', 'status_pemesanan'
     ];
 
     protected $primaryKey = 'id';

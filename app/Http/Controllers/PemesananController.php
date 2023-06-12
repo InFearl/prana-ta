@@ -47,13 +47,20 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
+        $biaya_pemesanan = 0;
+        $temporary_pemesanan = session("temporary_pemesanan");
+        foreach ($temporary_pemesanan as $temp) {
+            $biaya_pemesanan = $temp['biaya_pemesanan'];
+        }
+
         $dbpemesanan = Pemesanan::create([
             'tanggal_pemesanan' => Carbon::now(),
+            'biaya_pemesanan' => $biaya_pemesanan
         ]);
 
         DB::beginTransaction();
         try {
-            $temporary_pemesanan = session("temporary_pemesanan");
+            // $temporary_pemesanan = session("temporary_pemesanan");
             foreach ($temporary_pemesanan as $temp) {
                 DetailPemesanan::create([
                     'id_pemesanan' => $dbpemesanan->id,
@@ -113,7 +120,8 @@ class PemesananController extends Controller
             "id" => $request->id_persediaan,
             "nama_persediaan" => $dbpersediaan->nama_persediaan,
             "jumlah_pemesanan" => 0,
-            "eoq" => 0
+            "eoq" => 0,
+            "biaya_pemesanan" => 0
         ];
         // Memasukkan data array ke variabel session dengan id persediaan sebagai key
 
@@ -223,12 +231,25 @@ class PemesananController extends Controller
             $persediaan = Persediaan::findorfail($temp['id']);
             $temporary_pemesanan[$temp['id']]['eoq'] = $data->total > 0 ? round(sqrt((2 * $data->total * $request->biaya_pemesanan) / $persediaan->biaya_penyimpanan)) : 0;
             $temporary_pemesanan[$temp['id']]['jumlah_pemesanan'] = $data->total > 0 ? round(sqrt((2 * $data->total * $request->biaya_pemesanan) / $persediaan->biaya_penyimpanan)) : 0;
+            $temporary_pemesanan[$temp['id']]['biaya_pemesanan'] = $request->biaya_pemesanan;
             session(["temporary_pemesanan" => $temporary_pemesanan]);
             // dd($data->total);
         }
         $temporary_pemesanan = session("temporary_pemesanan");
         // dd($temporary_pemesanan);
         // $temporary_pemesanan = session("temporary_pemesanan");
+        return redirect()->route('tambah.pemesanan');
+    }
+
+    public function ubahJumlah(Request $request)
+    {
+        $request->validate([
+            'jumlah_pemesanan_ubah' => 'required',
+        ]);
+        $temporary_pemesanan = session("temporary_pemesanan");
+        $temporary_pemesanan[$request->id]['jumlah_pemesanan'] = $request->jumlah_pemesanan_ubah;
+        session(["temporary_pemesanan" => $temporary_pemesanan]);
+        // dd($request->all());
         return redirect()->route('tambah.pemesanan');
     }
 }

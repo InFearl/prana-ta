@@ -30,6 +30,7 @@
     @include('fumigator.includes.logout')
     @include('fumigator.includes.script')
     @include('sweetalert::alert')
+    @stack('after-script')
 
 </body>
 
