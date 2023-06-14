@@ -138,7 +138,7 @@ class PemesananController extends Controller
      */
     public function show($id)
     {
-        $dbpemesanan = DetailPemesanan::with(['persediaan', 'pemesanan'])->where('id_pemesanan', $id)->get();
+        $dbpemesanan = DetailPemesanan::with(['persediaan', 'pemesanan', ])->where('id_pemesanan', $id)->get();
         // dd($dbpenggunaan);
 
         return view('fumigator.pages.pemesanan.detail', compact('dbpemesanan'));
@@ -253,7 +253,15 @@ class PemesananController extends Controller
     }
 
     public function ChangeStatus($id){
-        $dbpemesanan = DetailPemesanan::findorfail($id);
+        $dbpemesanan = Pemesanan::select('status_pemesanan')->where('id',$id)->first();
+        if($dbpemesanan->status_pemesanan == 1){
+            $status_pemesanan = 0;
+        }else{
+            $status_pemesanan = 1; 
+        }
+        Pemesanan::where('id',$id)->update(['status_pemesanan'=>$status_pemesanan]);
+
+        return redirect()->back();
         
     }
 }
