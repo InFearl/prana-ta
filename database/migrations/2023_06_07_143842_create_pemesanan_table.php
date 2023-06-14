@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal_pemesanan');
             $table->integer('biaya_pemesanan');
-            $table->string('status_pemesanan')->default('Menunggu konfirmasi');
+            $table->integer('status_pemesanan')->default(0);
             $table->timestamps();
         });
     }

@@ -10,8 +10,8 @@ class DetailPenggunaan extends Model
     use HasFactory;
     protected $table = 'detail_penggunaan';
 
-    protected $fillable = [
-        'id_persediaan', 'id_penggunaan', 'jumlah_penggunaan'
+    protected $guarded = [
+        'id'
     ];
 
     protected $primaryKey = 'id';

@@ -48,7 +48,13 @@
                                     <td>{{ $item->container }}</td>
                                     <td>{{ date('d-m-y', strtotime($item->tanggal_masuk)) }}</td>
                                     <td>{{ date('d-m-y', strtotime($item->tanggal_akhir)) }}</td>
-                                    <td>{{ $item->status_pesanan }}</td>
+                                    <td>
+                                        @if ($item['status_pesanan']==1)
+                                        {{ 'Selesai' }}
+                                        @else
+                                        {{ 'Proses' }}  
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ url('ubah.pesanan', $item->id) }}"
                                             class="btn btn-info btn-circle btn-sm">

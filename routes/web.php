@@ -68,6 +68,7 @@ route::controller(PemesananController::class)->group(function () {
     Route::get('/show.pemesanan/{id}', 'show')->name('show.pemesanan');
     Route::get('/destroy.pemesanan/{id}', 'destroyItemTemp')->name('destroy.pemesanan');
     Route::post('/ubahjumlah.pemesanan', 'ubahJumlah')->name('ubahjumlah.pemesanan');
+    Route::get('/changestatus.pemesanan/{id}', 'ChangeStatus')->name('changestatus.pemesanan');
 });
 
 route::controller(PesananController::class)->group(function () {

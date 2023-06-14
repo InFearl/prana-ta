@@ -24,6 +24,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>Nama Perusahaan</th>
                                 <th>Tanggal Penggunaan Persediaan</th>
                                 <th>Aksi</th>
                             </tr>
@@ -31,6 +32,7 @@
                         <tfoot>
                             <tr>
                                 <th>Id</th>
+                                <th>Nama Perusahaan</th>
                                 <th>Tanggal Penggunaan Persediaan</th>
                                 <th>Aksi</th>
                             </tr>
@@ -39,6 +41,7 @@
                             @foreach ($dbpenggunaan as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
+                                    {{-- <td>{{ $item->pesanan->nama_perusahaan }}</td> --}}
                                     <td>{{ date('d F Y', strtotime($item->tanggal_penggunaan)) }}</td>
                                     <td>
                                         {{-- <a href="{{ url('ubah.penggunaan', $item->id) }}"
@@ -50,8 +53,8 @@
                                             <i class="fas fa-trash"></i>
                                         </a> --}}
                                         <a href="{{ url('show.penggunaan', $item->id) }}"
-                                            class="btn btn-info btn-circle btn-sm">
-                                            <i class="fas fa-info-circle"></i>Detail
+                                            class="btn btn-info">
+                                            <i class="fas fa-info-circle"></i> Detail
                                         </a>
                                     </td>
                                 </tr>

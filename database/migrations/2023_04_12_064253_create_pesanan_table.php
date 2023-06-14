@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('container')->default(0);
             $table->date('tanggal_masuk');
             $table->date('tanggal_akhir');
-            $table->string('status_pesanan')->default('Dalam Proses');
+            $table->string('status_pesanan')->default('0');
             $table->timestamps();
         });
     }

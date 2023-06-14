@@ -10,9 +10,14 @@ class Pesanan extends Model
     use HasFactory;
     protected $table = 'pesanan';
 
-    protected $fillable = [
-        'nama_perusahaan', 'container', 'tanggal_masuk', 'tanggal_akhir', 'status_pesanan'
+    protected $guarded = [
+        'id'
     ];
 
     protected $primaryKey = 'id';
+
+    public function penggunaan()
+    {
+        return $this->hasMany(Penggunaan::class, 'id');
+    }
 }

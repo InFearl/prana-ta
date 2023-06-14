@@ -1,0 +1,242 @@
+[
+    {
+        "id": "1",
+        "nama_perusahaan": "PT.Anakan\r\n",
+        "container": "20",
+        "tanggal_masuk": "2023-03-06",
+        "tanggal_akhir": "2023-03-13",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "2",
+        "nama_perusahaan": "PT.Belagi\r\n",
+        "container": "10",
+        "tanggal_masuk": "2023-03-08",
+        "tanggal_akhir": "2023-03-15",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "3",
+        "nama_perusahaan": "PT.Dobal\r\n",
+        "container": "15",
+        "tanggal_masuk": "2023-03-10",
+        "tanggal_akhir": "2023-06-17",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "4",
+        "nama_perusahaan": "PT.Cidel",
+        "container": "8",
+        "tanggal_masuk": "2023-03-12",
+        "tanggal_akhir": "2023-03-19",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "5",
+        "nama_perusahaan": "PT.Lara",
+        "container": "9",
+        "tanggal_masuk": "2023-03-14",
+        "tanggal_akhir": "2023-03-21",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "6",
+        "nama_perusahaan": "PT.Plaza",
+        "container": "12",
+        "tanggal_masuk": "2023-03-16",
+        "tanggal_akhir": "2023-03-23",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "7",
+        "nama_perusahaan": "PT.Ora",
+        "container": "13",
+        "tanggal_masuk": "2023-03-18",
+        "tanggal_akhir": "2023-03-30",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "8",
+        "nama_perusahaan": "PT.Teq",
+        "container": "14",
+        "tanggal_masuk": "2023-03-20",
+        "tanggal_akhir": "2023-03-27",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "9",
+        "nama_perusahaan": "PT.Kola",
+        "container": "18",
+        "tanggal_masuk": "2023-03-22",
+        "tanggal_akhir": "2023-03-29",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "10",
+        "nama_perusahaan": "PT.Yala",
+        "container": "17",
+        "tanggal_masuk": "2023-03-24",
+        "tanggal_akhir": "2023-03-31",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "11",
+        "nama_perusahaan": "PT.Iria",
+        "container": "14",
+        "tanggal_masuk": "2023-03-26",
+        "tanggal_akhir": "2023-04-02",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "12",
+        "nama_perusahaan": "PT.Mala",
+        "container": "10",
+        "tanggal_masuk": "2023-04-01",
+        "tanggal_akhir": "2023-04-08",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "13",
+        "nama_perusahaan": "PT.Uira",
+        "container": "12",
+        "tanggal_masuk": "2023-04-03",
+        "tanggal_akhir": "2023-04-10",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "14",
+        "nama_perusahaan": "PT.Rapa",
+        "container": "11",
+        "tanggal_masuk": "2023-04-05",
+        "tanggal_akhir": "2023-04-12",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "15",
+        "nama_perusahaan": "PT.Jala",
+        "container": "12",
+        "tanggal_masuk": "2023-04-07",
+        "tanggal_akhir": "2023-04-14",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "16",
+        "nama_perusahaan": "PT.Tara",
+        "container": "0",
+        "tanggal_masuk": "2023-04-09",
+        "tanggal_akhir": "2023-04-16",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "17",
+        "nama_perusahaan": "PT.Neo",
+        "container": "11",
+        "tanggal_masuk": "2023-04-11",
+        "tanggal_akhir": "2023-04-18",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "18",
+        "nama_perusahaan": "PT.Delta",
+        "container": "10",
+        "tanggal_masuk": "2023-04-13",
+        "tanggal_akhir": "2023-04-20",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "19",
+        "nama_perusahaan": "PT.Quara",
+        "container": "12",
+        "tanggal_masuk": "2023-04-15",
+        "tanggal_akhir": "2023-04-22",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "20",
+        "nama_perusahaan": "PT.Flora",
+        "container": "9",
+        "tanggal_masuk": "2023-04-17",
+        "tanggal_akhir": "2023-04-24",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "21",
+        "nama_perusahaan": "PT.Bila",
+        "container": "19",
+        "tanggal_masuk": "2023-05-02",
+        "tanggal_akhir": "2023-05-09",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "22",
+        "nama_perusahaan": "PT.BTQ",
+        "container": "15",
+        "tanggal_masuk": "2023-05-04",
+        "tanggal_akhir": "2023-05-11",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "23",
+        "nama_perusahaan": "PT.Serap",
+        "container": "13",
+        "tanggal_masuk": "2023-05-06",
+        "tanggal_akhir": "2023-05-13",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "24",
+        "nama_perusahaan": "PT.Dio",
+        "container": "16",
+        "tanggal_masuk": "2023-05-08",
+        "tanggal_akhir": "2023-05-15",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "25",
+        "nama_perusahaan": "PT.Vera",
+        "container": "8",
+        "tanggal_masuk": "2023-05-10",
+        "tanggal_akhir": "2023-05-17",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "26",
+        "nama_perusahaan": "PT.Zara",
+        "container": "15",
+        "tanggal_masuk": "2023-05-12",
+        "tanggal_akhir": "2023-05-19",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "27",
+        "nama_perusahaan": "PT.Xeno",
+        "container": "10",
+        "tanggal_masuk": "2023-05-14",
+        "tanggal_akhir": "2023-05-21",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "28",
+        "nama_perusahaan": "PT.Crya",
+        "container": "0",
+        "tanggal_masuk": "2023-05-16",
+        "tanggal_akhir": "2023-05-23",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "29",
+        "nama_perusahaan": "PT.Flart",
+        "container": "14",
+        "tanggal_masuk": "2023-05-18",
+        "tanggal_akhir": "2023-05-25",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "30",
+        "nama_perusahaan": "PT.QQQ",
+        "container": "15",
+        "tanggal_masuk": "2023-05-20",
+        "tanggal_akhir": "2023-05-27",
+        "status_pesanan": "0"
+    }
+]

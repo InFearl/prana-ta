@@ -43,7 +43,12 @@
                             @foreach ($dbpemesanan as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->status_pemesanan }}</td>
+                                    <td>
+                                        <a href="{{ url('changestatus.pemesanan', $item->id_pemesanan) }}"
+                                            class="btn btn-info">
+                                            <i >{{ $item->id_pemesanan }}</i>
+                                        </a>
+                                    </td>
                                     <td>{{ date('d F Y', strtotime($item->tanggal_pemesanan)) }}</td>
                                     <td>{{ $item->biaya_pemesanan }}</td>
                                     <td>
@@ -56,8 +61,8 @@
                                             <i class="fas fa-trash"></i>
                                         </a> --}}
                                         <a href="{{ url('show.pemesanan', $item->id) }}"
-                                            class="btn btn-info btn-circle btn-sm">
-                                            <i class="fas fa-info-circle"></i>Detail
+                                            class="btn btn-info">
+                                            <i class="fas fa-info-circle"></i> Detail
                                         </a>
                                     </td>
                                 </tr>

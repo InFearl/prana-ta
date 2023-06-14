@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('detail_pemesanan', function (Blueprint $table) {
             $table->id();
-            $table->string('id_pemesanan');
-            $table->string('id_persediaan');
+            $table->unsignedBigInteger('id_pemesanan');
+            $table->unsignedBigInteger('id_persediaan');
             $table->integer('eoq')->default(0);
             $table->integer('jumlah_pemesanan')->default(0);
             $table->timestamps();

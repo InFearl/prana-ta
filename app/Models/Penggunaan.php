@@ -10,8 +10,8 @@ class Penggunaan extends Model
     use HasFactory;
     protected $table = 'penggunaan';
 
-    protected $fillable = [
-        'tanggal_penggunaan'
+    protected $guarded = [
+        'id'
     ];
 
     protected $primaryKey = 'id';
@@ -19,5 +19,10 @@ class Penggunaan extends Model
     public function detailpenggunaan()
     {
         return $this->hasMany(DetailPenggunaan::class, 'id');
+    }
+
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class, 'id');
     }
 }

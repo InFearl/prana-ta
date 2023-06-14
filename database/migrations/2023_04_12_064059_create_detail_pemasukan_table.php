@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('detail_pemasukan', function (Blueprint $table) {
             $table->id();
-            $table->string('id_persediaan');
-            $table->string('id_pemasukan');
+            $table->unsignedBigInteger('id_persediaan');
+            $table->unsignedBigInteger('id_pemasukan');
             $table->integer('jumlah_pemasukan')->default(0);
             $table->timestamps();
         });

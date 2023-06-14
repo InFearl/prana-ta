@@ -19,7 +19,7 @@ class PenggunaanController extends Controller
      */
     public function index()
     {
-        $dbpenggunaan = Penggunaan::with(['detailpenggunaan.persediaan'])->latest()->paginate(20);
+        $dbpenggunaan = Penggunaan::with(['detailpenggunaan.persediaan.pesanan'])->latest()->paginate(20);
         return view('fumigator.pages.penggunaan.index', compact('dbpenggunaan'));
     }
 
@@ -129,7 +129,7 @@ class PenggunaanController extends Controller
      */
     public function show($id)
     {
-        $dbpenggunaan = DetailPenggunaan::with(['persediaan', 'penggunaan'])->where('id_penggunaan', $id)->get();
+        $dbpenggunaan = DetailPenggunaan::with(['persediaan', 'penggunaan'])->where('id_penggunaan', $id)->latest()->paginate(5);
         // dd($dbpenggunaan);
 
         return view('fumigator.pages.penggunaan.detail', compact('dbpenggunaan'));

@@ -10,8 +10,8 @@ class DetailPemasukan extends Model
     use HasFactory;
     protected $table = 'detail_pemasukan';
 
-    protected $fillable = [
-        'id_persediaan', 'id_pemasukan', 'jumlah_pemasukan'
+    protected $guarded = [
+        'id'
     ];
 
     protected $primaryKey = 'id';

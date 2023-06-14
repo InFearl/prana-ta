@@ -20,10 +20,9 @@ class PemesananController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $dbpersediaan = Persediaan::all();
-        $dbpemesanan = Pemesanan::all();
-        return view('fumigator.pages.pemesanan.index', compact('dbpemesanan', 'dbpersediaan'));
+    {   
+        $dbpemesanan = Pemesanan::with(['detailpemesanan.persediaan'])->latest()->paginate(20);
+        return view('fumigator.pages.pemesanan.index', compact('dbpemesanan'));
     }
 
     /**
@@ -251,5 +250,10 @@ class PemesananController extends Controller
         session(["temporary_pemesanan" => $temporary_pemesanan]);
         // dd($request->all());
         return redirect()->route('tambah.pemesanan');
+    }
+
+    public function ChangeStatus($id){
+        $dbpemesanan = DetailPemesanan::findorfail($id);
+        
     }
 }

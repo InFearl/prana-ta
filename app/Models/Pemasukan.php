@@ -10,8 +10,8 @@ class Pemasukan extends Model
     use HasFactory;
     protected $table = 'pemasukan';
 
-    protected $fillable = [
-        'tanggal_pemasukan'
+    protected $guarded = [
+        'id'
     ];
 
     protected $primaryKey = 'id';

@@ -10,8 +10,8 @@ class Persediaan extends Model
     use HasFactory;
     protected $table = 'persediaan';
 
-    protected $fillable = [
-        'nama_persediaan', 'jumlah_persediaan'
+    protected $guarded = [
+        'id'
     ];
 
     protected $primaryKey = 'id';
@@ -19,5 +19,20 @@ class Persediaan extends Model
     public function detailpenggunaan()
     {
         return $this->hasMany(DetailPenggunaan::class, 'id');
+    }
+
+    public function detailpemasukan()
+    {
+        return $this->hasMany(DetailPemasukan::class, 'id');
+    }
+
+    public function detailpemesenan()
+    {
+        return $this->hasMany(DetailPemesanan::class, 'id');
+    }
+
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class, 'id');
     }
 }

@@ -10,8 +10,8 @@ class Pemesanan extends Model
     use HasFactory;
     protected $table = 'pemesanan';
 
-    protected $fillable = [
-        'biaya_total', 'tanggal_pemesanan', 'biaya_pemesanan', 'status_pemesanan'
+    protected $guarded = [
+        'id'
     ];
 
     protected $primaryKey = 'id';
