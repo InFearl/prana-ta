@@ -43,12 +43,12 @@
                             @foreach ($dbpemesanan as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>    
-                                        @if ($item->status_pemesanan == 1)
-                                            <a href="{{ url('changestatus.pemesanan/'.$item->id) }}" onclick="return confirm('Apakah anda yakin ingin menganti status pemesanan?')" class="btn btn-sm btn-success">Sampai</a>
-                                        @else
-                                            <a href="{{ url('changestatus.pemesanan/'.$item->id) }}" onclick="return confirm('Apakah anda yakin ingin menganti status pemesanan?')" class="btn btn-sm btn-danger">Mengirim</a>
-                                        @endif
+                                    <td>
+                                    @if ($item->status_pemesanan == 1)
+                                        <a href="{{ url('changestatus.pemesanan/'.$item->id) }}" onclick="return confirm('Apakah anda yakin ingin menganti status pemesanan?')" class="btn btn-sm btn-success">Persediaan telah Sampai</a>
+                                    @else
+                                        <a href="{{ url('changestatus.pemesanan/'.$item->id) }}" onclick="return confirm('Apakah anda yakin ingin menganti status pemesanan?')" class="btn btn-sm btn-danger">Dalam Pengiriman</a>
+                                    @endif
                                     </td>
                                     <td>{{ date('d F Y', strtotime($item->tanggal_pemesanan)) }}</td>
                                     <td>{{ $item->biaya_pemesanan }}</td>

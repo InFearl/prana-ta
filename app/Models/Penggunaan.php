@@ -23,6 +23,6 @@ class Penggunaan extends Model
 
     public function pesanan()
     {
-        return $this->hasMany(Pesanan::class, 'id');
+        return $this->belongsTo(Pesanan::class, 'id_pesanan');
     }
 }

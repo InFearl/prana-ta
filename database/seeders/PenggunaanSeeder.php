@@ -19,6 +19,7 @@ class PenggunaanSeeder extends Seeder
         $datas = json_decode($datas);
         foreach ($datas as $data) {
             Penggunaan::create([
+                'id_pesanan' => $data->id_pesanan,
                 'tanggal_penggunaan' => $data->tanggal_penggunaan
             ]);
         }

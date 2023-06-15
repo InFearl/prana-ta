@@ -49,11 +49,7 @@
                                     <td>{{ date('d-m-y', strtotime($item->tanggal_masuk)) }}</td>
                                     <td>{{ date('d-m-y', strtotime($item->tanggal_akhir)) }}</td>
                                     <td>
-                                        @if ($item['status_pesanan']==1)
-                                        {{ 'Selesai' }}
-                                        @else
-                                        {{ 'Proses' }}  
-                                        @endif
+                                        <label class="badge {{ ($item->status_pesanan == 1) ? 'badge-success' : 'badge-danger'}}">{{ ($item->status_pesanan == 1) ? 'Selesai' : 'Proses Pekerjaan'}}</label>
                                     </td>
                                     <td>
                                         <a href="{{ url('ubah.pesanan', $item->id) }}"

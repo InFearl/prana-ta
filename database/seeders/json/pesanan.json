@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "nama_perusahaan": "PT.Anakan\r\n",
+        "nama_perusahaan": "PT.Anakan",
         "container": "20",
         "tanggal_masuk": "2023-03-06",
         "tanggal_akhir": "2023-03-13",
@@ -9,7 +9,7 @@
     },
     {
         "id": "2",
-        "nama_perusahaan": "PT.Belagi\r\n",
+        "nama_perusahaan": "PT.Belagi",
         "container": "10",
         "tanggal_masuk": "2023-03-08",
         "tanggal_akhir": "2023-03-15",
@@ -17,7 +17,7 @@
     },
     {
         "id": "3",
-        "nama_perusahaan": "PT.Dobal\r\n",
+        "nama_perusahaan": "PT.Dobal",
         "container": "15",
         "tanggal_masuk": "2023-03-10",
         "tanggal_akhir": "2023-06-17",
@@ -237,6 +237,22 @@
         "container": "15",
         "tanggal_masuk": "2023-05-20",
         "tanggal_akhir": "2023-05-27",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "31",
+        "nama_perusahaan": "PT.as",
+        "container": "11",
+        "tanggal_masuk": "2023-05-25",
+        "tanggal_akhir": "2023-06-01",
+        "status_pesanan": "0"
+    },
+    {
+        "id": "32",
+        "nama_perusahaan": "PT.in",
+        "container": "14",
+        "tanggal_masuk": "2023-05-28",
+        "tanggal_akhir": "2023-06-05",
         "status_pesanan": "0"
     }
 ]

@@ -40,8 +40,8 @@
                         <tbody>
                             @foreach ($dbpenggunaan as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
-                                    {{-- <td>{{ $item->pesanan->nama_perusahaan }}</td> --}}
+                                    <td>{{ $item->pesanan->id }}</td>
+                                    <td>{{ $item->pesanan->nama_perusahaan }}</td>
                                     <td>{{ date('d F Y', strtotime($item->tanggal_penggunaan)) }}</td>
                                     <td>
                                         {{-- <a href="{{ url('ubah.penggunaan', $item->id) }}"
