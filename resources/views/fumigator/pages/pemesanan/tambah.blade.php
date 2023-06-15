@@ -73,9 +73,9 @@
                 <a href="{{ route('simpan.pemesanan') }}" class="btn btn-primary"><i
                         class="fas fa-save"></i><span>&nbsp;Simpan</span></a>
             </div>
-            <div class="card-body">
+            <div style="color: black;" class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table style="color: black;" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No</th>

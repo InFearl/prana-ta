@@ -9,16 +9,15 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Penggunaan Persediaan</h1>
-        <div>
-            <a href="{{ route('tambah.penggunaan') }}" class="btn btn-success"><i
-                    class="fas fa-plus"></i><span>Tambah</span></a>
-            <a href="{{ route('cetak.penggunaan') }}" target="_blank" class="btn btn-success"><i
-                    class="fas fa-print"></i><span>Cetak</span></a>
-        </div>
-
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
+                <div class="d-flex justify-content-start mb-4">
+                    <a href="{{ route('tambah.penggunaan') }}" class="btn btn-success mx-1"><i
+                        class="fas fa-plus"></i><span>Tambah</span></a>
+                <a href="{{ route('cetak.penggunaan') }}" target="_blank" class="btn btn-success mx-1"><i
+                        class="fas fa-print"></i><span>Cetak</span></a>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
