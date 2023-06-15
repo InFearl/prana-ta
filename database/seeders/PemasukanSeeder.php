@@ -19,6 +19,7 @@ class PemasukanSeeder extends Seeder
         $datas = json_decode($datas);
         foreach ($datas as $data) {
             Pemasukan::create([
+                'id_pemesanan' => $data->id_pemesanan,
                 'tanggal_pemasukan' => $data->tanggal_pemasukan
             ]);
         }

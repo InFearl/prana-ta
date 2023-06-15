@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pemasukan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_pemesanan');
             $table->date('tanggal_pemasukan');
             $table->timestamps();
         });

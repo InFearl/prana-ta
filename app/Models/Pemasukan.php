@@ -20,4 +20,9 @@ class Pemasukan extends Model
     {
         return $this->hasMany(DetailPemasukan::class, 'id');
     }
+
+    public function pemesanan()
+    {
+        return $this->belongsTo(Pemesanan::class, 'id_pemesanan');
+    }
 }
