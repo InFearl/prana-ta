@@ -20,9 +20,16 @@ class PemesananController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $dbpemesanan = Pemesanan::with(['detailpemesanan.persediaan'])->latest()->paginate(20);
         return view('fumigator.pages.pemesanan.index', compact('dbpemesanan'));
+    }
+
+    public function jumlahHari($bulan_tahun)
+    {
+        # code...
+        $jumlah = date('t', strtotime(substr($bulan_tahun, 3, 4) . "-" . substr($bulan_tahun, 0, 2) . "-01"));
+        return $jumlah;
     }
 
     /**
@@ -138,7 +145,7 @@ class PemesananController extends Controller
      */
     public function show($id)
     {
-        $dbpemesanan = DetailPemesanan::with(['persediaan', 'pemesanan', ])->where('id_pemesanan', $id)->get();
+        $dbpemesanan = DetailPemesanan::with(['persediaan', 'pemesanan',])->where('id_pemesanan', $id)->get();
         // dd($dbpenggunaan);
 
         return view('fumigator.pages.pemesanan.detail', compact('dbpemesanan'));
@@ -252,16 +259,39 @@ class PemesananController extends Controller
         return redirect()->route('tambah.pemesanan');
     }
 
-    public function ChangeStatus($id){
-        $dbpemesanan = Pemesanan::select('status_pemesanan')->where('id',$id)->first();
-        if($dbpemesanan->status_pemesanan == 1){
+    public function ChangeStatus($id)
+    {
+        $dbpemesanan = Pemesanan::select('status_pemesanan')->where('id', $id)->first();
+        if ($dbpemesanan->status_pemesanan == 1) {
             $status_pemesanan = 0;
-        }else{
-            $status_pemesanan = 1; 
+        } else {
+            $status_pemesanan = 1;
         }
-        Pemesanan::where('id',$id)->update(['status_pemesanan'=>$status_pemesanan]);
+
+        $details = DB::table('detail_pemesanan as dp')
+            ->join('pemesanan as p', 'dp.id_pemesanan', '=', 'p.id')
+            ->where('dp.id_pemesanan', '=', $id)
+            ->get();
+
+        $bulan_tahun = DB::table('penggunaan')
+            ->selectRaw('DATE_FORMAT(MAX(tanggal_penggunaan),"%m-%Y") as bulan')
+            ->whereRaw('DATE_FORMAT(tanggal_penggunaan, "%m-%Y") < DATE_FORMAT(now(), "%m-%Y")')
+            ->first();
+
+        $month_before = Carbon::createFromFormat('m-Y', $bulan_tahun->bulan)->subMonth(2)->format('m-Y');
+
+        $subdate = Carbon::createFromFormat('d-m-Y', '01' . "-" . $month_before)->format('Y-m-d');
+        $lastdate = Carbon::createFromFormat('d-m-Y', '01' . "-" . $bulan_tahun->bulan)->addDay($this->jumlahHari($bulan_tahun->bulan))->format('Y-m-d');
+        // $lastdate = Carbon::parse($lastdate);
+        $lastdateparse = Carbon::parse($lastdate);
+        $subdateparse = Carbon::parse($subdate);
+        $jumlah_hari = $lastdateparse->diffInDays($subdateparse);
+        // dd($lastdateparse->diffInDays($subdateparse));
+        // $avg_date = DB::table('pemesanan as pm')
+        // ->join('')
+
+        Pemesanan::where('id', $id)->update(['status_pemesanan' => $status_pemesanan]);
 
         return redirect()->back();
-        
     }
 }
