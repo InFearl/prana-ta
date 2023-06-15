@@ -21,7 +21,7 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        $dbpemesanan = Pemesanan::with(['detailpemesanan.persediaan'])->latest()->paginate(20);
+        $dbpemesanan = Pemesanan::with(['detailpemesanan.persediaan'])->orderBy('tanggal_pemesanan', 'desc')->latest()->paginate(20);
         return view('fumigator.pages.pemesanan.index', compact('dbpemesanan'));
     }
 
@@ -287,8 +287,30 @@ class PemesananController extends Controller
         $subdateparse = Carbon::parse($subdate);
         $jumlah_hari = $lastdateparse->diffInDays($subdateparse);
         // dd($lastdateparse->diffInDays($subdateparse));
-        // $avg_date = DB::table('pemesanan as pm')
-        // ->join('')
+        $avg_date = DB::table('pemasukan as pms')
+            ->join('pemesanan as psn', 'pms.id_pemesanan', '=', 'psn.id')
+            ->selectRaw('round(avg(DATEDIFF( pms.tanggal_pemasukan, psn.tanggal_pemesanan))) as lead_time')
+            ->where('psn.status_pemesanan', 1)
+            ->whereBetween('pms.tanggal_pemasukan', [$subdate, $lastdate])
+            ->first();
+
+        foreach ($details as $detail) {
+            $data = DB::table('detail_penggunaan as dp')
+                ->join('penggunaan as p', 'dp.id_penggunaan', '=', 'p.id')
+                ->join('persediaan as pd', 'dp.id_persediaan', '=', 'pd.id')
+                ->selectRaw('max(dp.jumlah_penggunaan) as max, round(avg(dp.jumlah_penggunaan)) as avg, sum(dp.jumlah_penggunaan) as total')
+                ->whereRaw('p.id = "' . $detail->id_persediaan . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") >= "' . $month_before . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") <= "' . $bulan_tahun->bulan . '"')
+                ->first();
+            // dd($data->max);
+            $lead_time = !empty($avg_date->lead_time) ? $avg_date->lead_time : 2;
+            $ss = ($data->max - $data->avg) * $lead_time;
+            // $jumlah_hari = $this->jumlahHari($bulan_tahun->bulan);
+            $d = (int)round($data->total / $jumlah_hari);
+            $rop = ($d * $lead_time) + $ss;
+            Persediaan::where('id', $detail->id_persediaan)->update(['rop' => $rop]);
+            // dd($rop);
+        }
+        // dd($avg_date->lead_time);
 
         Pemesanan::where('id', $id)->update(['status_pemesanan' => $status_pemesanan]);
 
