@@ -299,12 +299,13 @@ class PemesananController extends Controller
                 ->join('penggunaan as p', 'dp.id_penggunaan', '=', 'p.id')
                 ->join('persediaan as pd', 'dp.id_persediaan', '=', 'pd.id')
                 ->selectRaw('max(dp.jumlah_penggunaan) as max, round(avg(dp.jumlah_penggunaan)) as avg, sum(dp.jumlah_penggunaan) as total')
-                ->whereRaw('p.id = "' . $detail->id_persediaan . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") >= "' . $month_before . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") <= "' . $bulan_tahun->bulan . '"')
+                ->whereRaw('pd.id = "' . $detail->id_persediaan . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") >= "' . $month_before . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") <= "' . $bulan_tahun->bulan . '"')
                 ->first();
             // dd($data->max);
-            $lead_time = !empty($avg_date->lead_time) ? $avg_date->lead_time : 2;
+            $lead_time = !empty($avg_date->lead_time) ? $avg_date->lead_time : 3;
             $ss = ($data->max - $data->avg) * $lead_time;
             // $jumlah_hari = $this->jumlahHari($bulan_tahun->bulan);
+
             $d = (int)round($data->total / $jumlah_hari);
             $rop = ($d * $lead_time) + $ss;
             Persediaan::where('id', $detail->id_persediaan)->update(['rop' => $rop]);

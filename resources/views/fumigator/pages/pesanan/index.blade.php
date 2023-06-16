@@ -10,7 +10,6 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="d-flex justify-content-start mb-4">
-                    <button type="button" class="btn btn-success mx-1">konfirmasi</button>
                     <a href="{{ route('tambah.pesanan') }}" class="btn btn-success mx-1"><i
                             class="fas fa-plus"></i><span>Tambah</span></a>
                     <a href="{{ route('cetak.pesanan') }}" target="_blank" class="btn btn-success mx-1"><i

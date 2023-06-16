@@ -46,6 +46,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="example-date-input" class="col-md-2 col-form-label">Reorder Point</label>
+                                <div class="col-md-10">
+                                    
+                                </div>
+                            </div>
                             {{-- <div class="mb-3 row">
                                 <label for="example-date-input" class="col-md-2 col-form-label">Jumlah Penggunaan</label>
                                 <div class="col-md-10">
