@@ -19,9 +19,8 @@
             <tr>
                 <th>Id Pesanan</th>
                 <th>Nama Perusahaan</th>
-                <th>20ft</th>
-                <th>40ft</th>
-                <th>Tanggal Masuk Pesanan</th>
+                <th>Container</th>
+                <th>Tanggal Masuk Pesan</th>
                 <th>Deadline Pesanan</th>
                 <th>Status Pesanan</th>
             </tr>
@@ -30,11 +29,12 @@
                     
                     <td>{{ $item->id}}</td>
                     <td>{{ $item->nama_perusahaan }}</td>
-                    <td>{{ $item->c20ft }}</td>
-                    <td>{{ $item->c40ft }}</td>
+                    <td>{{ $item->container }}</td>
                     <td>{{ date('d-m-y', strtotime($item->tanggal_masuk)) }}</td>
                     <td>{{ date('d-m-y', strtotime($item->tanggal_akhir)) }}</td>
-                    <td>{{ $item->status_pesanan }}</td>
+                    <td>
+                        <label>{{ ($item->status_pesanan == 1) ? 'Selesai' : 'Proses Pengerjaan'}}</label>
+                    </td>
                 </tr>
             @endforeach
         </table>

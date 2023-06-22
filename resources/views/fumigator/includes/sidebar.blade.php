@@ -25,13 +25,13 @@
             <div class="sidebar-heading">
                 Interface
             </div>
-            {{-- @if (auth()->user()->role=="fumigator"||auth()->user()->role=="manager") --}}
+            @if (Auth::guard('users')->user()->role=="fumigator"||Auth::guard('users')->user()->role=="manager")
             <li class="nav-item">
                 <a class="nav-link" href="/persediaan">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Persediaan</span></a>
             </li>                  
-            {{-- @endif --}}
+            @endif
             
 
             <li class="nav-item">
@@ -39,27 +39,27 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Pesanan</span></a>
             </li>
-            {{-- @if (auth()->user()->role=="fumigator"||auth()->user()->role=="manager") --}}
+            @if (Auth::guard('users')->user()->role=="fumigator"||Auth::guard('users')->user()->role=="manager")
             <li class="nav-item">
                 <a class="nav-link" href="/penggunaan">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Penggunaan</span></a>
             </li>
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->role=="fumigator"||auth()->user()->role=="manager") --}}
+            @endif
+            @if (Auth::guard('users')->user()->role=="fumigator"||Auth::guard('users')->user()->role=="manager")
             <li class="nav-item">
                 <a class="nav-link" href="/pemasukan">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Pemasukan</span></a>
             </li>
-            {{-- @endif  --}}
-            {{-- @if (auth()->user()->role=="fumigator"||auth()->user()->role=="manager") --}}
+            @endif 
+            @if (Auth::guard('users')->user()->role=="fumigator"||Auth::guard('users')->user()->role=="manager")
             <li class="nav-item">
                 <a class="nav-link" href="/pemesanan">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Pemesanan</span></a>
             </li>
-            {{-- @endif --}}
+            @endif
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

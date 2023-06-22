@@ -25,7 +25,7 @@ class PemasukanController extends Controller
 
     public function cetakpemasukan()
     {
-        $dbcetakpemasukan = Pemasukan::with('persediaan')->get();
+        $dbcetakpemasukan = DetailPemasukan::with('persediaan','pemasukan')->get();
         return view('fumigator.pages.pemasukan.cetak', compact('dbcetakpemasukan'));
     }
     /**

@@ -27,7 +27,7 @@
                     <td>{{ $item->id}}</td>
                     <td>{{ $item->persediaan->nama_persediaan ?? 'kosong'}}</td>
                     <td>{{ $item->jumlah_penggunaan}}</td>
-                    <td>{{ date('d-m-y', strtotime($item->tanggal_penggunaan)) }}</td>
+                    <td>{{ date('d F Y', strtotime($item->penggunaan->tanggal_penggunaan)) }}</td>
                 </tr>
             @endforeach
         </table>

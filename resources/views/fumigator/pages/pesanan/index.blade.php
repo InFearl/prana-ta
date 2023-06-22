@@ -12,8 +12,10 @@
                 <div class="d-flex justify-content-start mb-4">
                     <a href="{{ route('tambah.pesanan') }}" class="btn btn-success mx-1"><i
                             class="fas fa-plus"></i><span>Tambah</span></a>
+                    @if (Auth::guard('users')->user()->role=="manager")
                     <a href="{{ route('cetak.pesanan') }}" target="_blank" class="btn btn-success mx-1"><i
                             class="fas fa-print"></i><span>Cetak</span></a>
+                    @endif
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -48,7 +50,7 @@
                                     <td>{{ date('d-m-y', strtotime($item->tanggal_masuk)) }}</td>
                                     <td>{{ date('d-m-y', strtotime($item->tanggal_akhir)) }}</td>
                                     <td>
-                                        <label class="badge {{ ($item->status_pesanan == 1) ? 'badge-success' : 'badge-danger'}}">{{ ($item->status_pesanan == 1) ? 'Selesai' : 'Proses Pekerjaan'}}</label>
+                                        <label class="badge {{ ($item->status_pesanan == 1) ? 'badge-success' : 'badge-danger'}}">{{ ($item->status_pesanan == 1) ? 'Selesai' : 'Proses Pengerjaan'}}</label>
                                     </td>
                                     <td>
                                         <a href="{{ url('ubah.pesanan', $item->id) }}"

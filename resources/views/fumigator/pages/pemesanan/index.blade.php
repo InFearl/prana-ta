@@ -12,8 +12,10 @@
         <div>
             <a href="{{ route('tambah.pemesanan') }}" class="btn btn-success"><i
                     class="fas fa-plus"></i><span>Tambah</span></a>
-            <a href="{{ route('cetak.pemesanan') }}" target="_blank" class="btn btn-success"><i
-                    class="fas fa-print"></i><span>Cetak</span></a>
+            @if (Auth::guard('users')->user()->role=="manager")
+                <a href="{{ route('cetak.pemesanan') }}" target="_blank" class="btn btn-success"><i
+                class="fas fa-print"></i><span>Cetak</span></a>
+            @endif
         </div>
 
         <!-- DataTales Example -->
@@ -44,11 +46,14 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>
-                                    @if ($item->status_pemesanan == 1)
-                                        <a href="{{ url('changestatus.pemesanan/'.$item->id) }}" onclick="return confirm('Apakah anda yakin ingin menganti status pemesanan?')" class="btn btn-sm btn-success">Persediaan telah Sampai</a>
-                                    @else
-                                        <a href="{{ url('changestatus.pemesanan/'.$item->id) }}" onclick="return confirm('Apakah anda yakin ingin menganti status pemesanan?')" class="btn btn-sm btn-danger">Dalam Pengiriman</a>
-                                    @endif
+                                        @if ($item->status_pemesanan == 1)
+                                            <a href="#" class="btn btn-sm btn-success" disabled>Persediaan telah
+                                                Sampai</a>
+                                        @else
+                                            <a href="{{ url('changestatus.pemesanan/' . $item->id) }}"
+                                                onclick="return confirm('Apakah anda yakin ingin menganti status pemesanan?')"
+                                                class="btn btn-sm btn-danger">Dalam Pengirim    an</a>
+                                        @endif
                                     </td>
                                     <td>{{ date('d F Y', strtotime($item->tanggal_pemesanan)) }}</td>
                                     <td>{{ $item->biaya_pemesanan }}</td>
@@ -61,8 +66,7 @@
                                             class="btn btn-danger btn-circle btn-sm">
                                             <i class="fas fa-trash"></i>
                                         </a> --}}
-                                        <a href="{{ url('show.pemesanan', $item->id) }}"
-                                            class="btn btn-info">
+                                        <a href="{{ url('show.pemesanan', $item->id) }}" class="btn btn-info">
                                             <i class="fas fa-info-circle"></i> Detail
                                         </a>
                                     </td>

@@ -10,24 +10,24 @@
             border: 1px solid #554433
         }
     </style>
-    <title>Cetak Data Pemasukan</title>
+    <title>Cetak Data Pemesanan</title>
 </head>
 <body>
     <div>
-        <p align="center"><b>Laporan Data Pemasukan</b></p>
+        <p align="center"><b>Laporan Data Pemesanan</b></p>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%">
             <tr>
                 <th>Id</th>
                 <th>Nama Persediaan</th>
-                <th>Jumlah Pemasukan</th>
-                <th>Tanggal Masuk Persediaan</th>
+                <th>Jumlah Pemesanan</th>
+                <th>Tanggal Pemesanan Persediaan</th>
             </tr>
-            @foreach ($dbcetakpemasukan as $item)
+            @foreach ($dbcetakpemesanan as $item)
                 <tr>
                     <td>{{ $item->id}}</td>
                     <td>{{ $item->persediaan->nama_persediaan ?? 'kosong'}}</td>
-                    <td>{{ $item->jumlah_pemasukan}}</td>
-                    <td>{{ date('d-m-y', strtotime($item->pemasukan->tanggal_pemasukan)) }}</td>
+                    <td>{{ $item->jumlah_pemesanan}}</td>
+                    <td>{{ date('d F Y', strtotime($item->pemesanan->tanggal_penggunaan)) }}</td>
                 </tr>
             @endforeach
         </table>

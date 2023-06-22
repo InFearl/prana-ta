@@ -25,7 +25,7 @@ class PenggunaanController extends Controller
 
     public function cetakpenggunaan()
     {
-        $dbcetakpenggunaan = Penggunaan::with('persediaan')->get();
+        $dbcetakpenggunaan = DetailPenggunaan::with('persediaan','penggunaan')->get();
         return view('fumigator.pages.penggunaan.cetak', compact('dbcetakpenggunaan'));
     }
 

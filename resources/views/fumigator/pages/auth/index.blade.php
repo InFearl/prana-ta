@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>SB Admin 2 - Login</title>
+    <title>Login</title>
     @include('fumigator.includes.header')
 </head>
 
@@ -25,16 +25,21 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form action="{{ route('login.post') }}" class="user" method="POST">
+                                    <form action="{{ route('authenticate.login') }}" class="user" method="POST">
                                     {{ csrf_field() }}
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" name="nama"
-                                                id="inputUsername" aria-describedby="emailHelp"
-                                                placeholder="Masukan Nama Anda.....">
+                                                id="nama" aria-describedby="emailHelp @error('nama') is-invalid @enderror"
+                                                placeholder="Masukan Nama Anda....." autofocus required value="{{ old('nama') }}">
+                                                @error('nama')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" name="password"
-                                                id="inputPassword" placeholder="Password">
+                                                id="password" placeholder="Password" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login

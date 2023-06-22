@@ -20,6 +20,12 @@ class PersediaanController extends Controller
         return view('fumigator.pages.persediaan.index', compact('dbpersediaan'));
     }
 
+    public function cetakpersediaan()
+    {
+        $dbcetakpersediaan = Persediaan::get();
+        return view('fumigator.pages.persediaan.cetak', compact('dbcetakpersediaan'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
