@@ -10,8 +10,10 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="d-flex justify-content-start mb-4">
+                    @if (Auth::guard('users')->user()->role=="administrasi")
                     <a href="{{ route('tambah.pesanan') }}" class="btn btn-success mx-1"><i
                             class="fas fa-plus"></i><span>Tambah</span></a>
+                    @endif
                     @if (Auth::guard('users')->user()->role=="manager")
                     <a href="{{ route('cetak.pesanan') }}" target="_blank" class="btn btn-success mx-1"><i
                             class="fas fa-print"></i><span>Cetak</span></a>

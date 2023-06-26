@@ -10,8 +10,10 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Pemesanan Persediaan</h1>
         <div>
+            @if (Auth::guard('users')->user()->role=="fumigator")
             <a href="{{ route('tambah.pemesanan') }}" class="btn btn-success"><i
                     class="fas fa-plus"></i><span>Tambah</span></a>
+            @endif
             @if (Auth::guard('users')->user()->role=="manager")
                 <a href="{{ route('cetak.pemesanan') }}" target="_blank" class="btn btn-success"><i
                 class="fas fa-print"></i><span>Cetak</span></a>
