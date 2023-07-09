@@ -30,32 +30,32 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="example-number-input" class="col-md-2 col-form-label">container</label>
+                        <label for="example-number-input" class="col-md-2 col-form-label">Jumlah Container</label>
                         <div class="col-md-10">
                             <input class="form-control" type="number" id="container" name="container" placeholder="Jumlah Container" id="example-number-input">
                         </div>
                     </div>
-                    <div class="mb-3 row">
+                    {{-- <div class="mb-3 row">
                         <label for="example-date-input" class="col-md-2 col-form-label">Tanggal Masuk Pesanan</label>
                         <div class="col-md-10">
-                            <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" value="2019-08-19"
+                            <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk"
                                 id="example-date-input">
                         </div>
-                    </div>  
+                    </div>   --}}
                     <div class="mb-3 row">
                         <label for="example-date-input" class="col-md-2 col-form-label">Deadline Pesanan</label>
                         <div class="col-md-10">
-                            <input class="form-control" type="date" id="tanggal_akhir" name="tanggal_akhir" value="2019-08-19"
+                            <input class="form-control" type="date" id="tanggal_akhir" name="tanggal_akhir" 
                                 id="example-date-input">
                         </div>
                     </div>
-                    <div class="mb-3 row">
+                    {{-- <div class="mb-3 row">
                         <label for="example-text-input"class="col-md-2 col-form-label">Status Pesanan</label>
                         <div class="col-md-10">
                             <input class="form-control" type="text" id="status_pesanan" name="status_pesanan" placeholder="Status Pesanan"
                                 id="example-text-input">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="mb-3 row">
                         <button type="submit" class="btn btn-success">Simpan Data</button>
                     </div>  

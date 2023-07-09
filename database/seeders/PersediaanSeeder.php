@@ -19,7 +19,7 @@ class PersediaanSeeder extends Seeder
     {
         Persediaan::create([
             'nama_persediaan' => 'Gas Methyl Bromide',
-            'jumlah_persediaan' => '50',
+            'jumlah_persediaan' => '500',
             'biaya_penyimpanan' => '2000',
         ]);
         Persediaan::create([
@@ -34,17 +34,17 @@ class PersediaanSeeder extends Seeder
         ]);
         Persediaan::create([
             'nama_persediaan' => 'Plastik Fumigasi',
-            'jumlah_persediaan' => '50',
+            'jumlah_persediaan' => '80',
             'biaya_penyimpanan' => '2000',
         ]);
         Persediaan::create([
             'nama_persediaan' => 'Sand Snake',
-            'jumlah_persediaan' => '50',
+            'jumlah_persediaan' => '270',
             'biaya_penyimpanan' => '2000',
         ]);
         Persediaan::create([
             'nama_persediaan' => 'Kertas Sertifikat Fumigasi',
-            'jumlah_persediaan' => '50',
+            'jumlah_persediaan' => '60',
             'biaya_penyimpanan' => '2000',
         ]);
     }

@@ -9,20 +9,19 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Pemesanan Persediaan</h1>
-        <div>
-            @if (Auth::guard('users')->user()->role=="fumigator")
-            <a href="{{ route('tambah.pemesanan') }}" class="btn btn-success"><i
-                    class="fas fa-plus"></i><span>Tambah</span></a>
-            @endif
-            @if (Auth::guard('users')->user()->role=="manager")
-                <a href="{{ route('cetak.pemesanan') }}" target="_blank" class="btn btn-success"><i
-                class="fas fa-print"></i><span>Cetak</span></a>
-            @endif
-        </div>
-
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
+                <div>
+                    @if (Auth::guard('users')->user()->role=="fumigator")
+                    <a href="{{ route('tambah.pemesanan') }}" class="btn btn-success"><i
+                            class="fas fa-plus"></i><span>Tambah</span></a>
+                    @endif
+                    @if (Auth::guard('users')->user()->role=="manager")
+                        <a href="{{ route('cetak.pemesanan') }}" target="_blank" class="btn btn-success"><i
+                        class="fas fa-print"></i><span>Cetak</span></a>
+                    @endif
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -54,7 +53,7 @@
                                         @else
                                             <a href="{{ url('changestatus.pemesanan/' . $item->id) }}"
                                                 onclick="return confirm('Apakah anda yakin ingin menganti status pemesanan?')"
-                                                class="btn btn-sm btn-danger">Dalam Pengirim    an</a>
+                                                class="btn btn-sm btn-danger">Dalam Pengiriman</a>
                                         @endif
                                     </td>
                                     <td>{{ date('d F Y', strtotime($item->tanggal_pemesanan)) }}</td>

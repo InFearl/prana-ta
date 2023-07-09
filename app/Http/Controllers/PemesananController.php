@@ -24,10 +24,10 @@ class PemesananController extends Controller
         $dbpemesanan = Pemesanan::with(['detailpemesanan.persediaan'])->orderBy('tanggal_pemesanan', 'desc')->latest()->paginate(20);
         return view('fumigator.pages.pemesanan.index', compact('dbpemesanan'));
     }
-    
+
     public function cetakpemesanan()
     {
-        $dbcetakpemesanan = DetailPemesanan::with('persediaan','pemesanan')->get();
+        $dbcetakpemesanan = DetailPemesanan::with('persediaan', 'pemesanan')->get();
         return view('fumigator.pages.pemesanan.cetak', compact('dbcetakpemesanan'));
     }
 
@@ -314,7 +314,7 @@ class PemesananController extends Controller
 
             $d = (int)round($data->total / $jumlah_hari);
             $rop = ($d * $lead_time) + $ss;
-            Persediaan::where('id', $detail->id_persediaan)->update(['rop' => $rop, 'safety_stock'=> $ss]);
+            Persediaan::where('id', $detail->id_persediaan)->update(['rop' => $rop, 'safety_stock' => $ss]);
             // dd($rop);
         }
         // dd($avg_date->lead_time);

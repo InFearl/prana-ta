@@ -15,11 +15,11 @@
             </div>
         </div> --}}
         <!-- end page title -->
-
+        
 
         <div class="card shadow mb-3">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h6 class="m-2 font-weight-bold text-primary">List Penggunaan Persediaan</h6>
+                <h6 class="m-2 font-weight-bold text-primary">Pilih Persediaan</h6>
             </div>
             <div class="card-body">
                 <form action="{{ route('add.penggunaan') }}" method="POST">

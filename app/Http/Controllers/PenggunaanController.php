@@ -7,6 +7,7 @@ use App\Models\Penggunaan;
 use App\Models\Persediaan;
 use Illuminate\Http\Request;
 use App\Models\DetailPenggunaan;
+use App\Models\Pesanan;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -92,12 +93,6 @@ class PenggunaanController extends Controller
             'jumlah_penggunaan' => 'required'
         ]);
         // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
-
-        // Mencari data menggunakan query builder
-        // $dbpersediaan = DB::table('persediaan')
-        //     ->where('id', $request->id_persediaan)
-        //     ->first();
-        // Mencari data menggunakan query builder
 
         // Mencari data menggunakan model
         $dbpersediaan = Persediaan::findorfail($request->id_persediaan);

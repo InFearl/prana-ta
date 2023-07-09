@@ -9,18 +9,18 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Pemasukan Persediaan</h1>
-        <div>
-            <a href="{{ route('tambah.pemasukan') }}" class="btn btn-success"><i
-                    class="fas fa-plus"></i><span>Tambah</span></a>
-            @if (Auth::guard('users')->user()->role=="manager")
-                <a href="{{ route('cetak.pemasukan') }}" target="_blank" class="btn btn-success"><i
-                class="fas fa-print"></i><span>Cetak</span></a>
-            @endif
-        </div>
-
+    
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
+                <div>
+                    <a href="{{ route('tambah.pemasukan') }}" class="btn btn-success"><i
+                            class="fas fa-plus"></i><span>Tambah</span></a>
+                    @if (Auth::guard('users')->user()->role=="manager")
+                        <a href="{{ route('cetak.pemasukan') }}" target="_blank" class="btn btn-success"><i
+                        class="fas fa-print"></i><span>Cetak</span></a>
+                    @endif
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>

@@ -7,12 +7,12 @@
 @section('content')
 <div class="container-fluid">    
     <h1 class="h3 mb-0 text-gray-800">Persediaan</h1>
-    <div >
+    <div class="card shadow mb-4">
+        <div class="card-body">
         @if (Auth::guard('users')->user()->role=="manager")
         <a href="{{ route('cetak.persediaan') }}" target="_blank" class="btn btn-success mx-1"><i
             class="fas fa-print"></i><span>Cetak</span></a>
-        @endif
-    </div>    
+        @endif 
     <div class="row">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

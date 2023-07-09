@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Persediaan;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class PesananController extends Controller
 {
@@ -13,13 +16,15 @@ class PesananController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $dbpesanan = Pesanan::latest()->paginate(5);
-        return view('fumigator.pages.pesanan.index',compact('dbpesanan'));
+    {
+        $dbpesanan = Pesanan::latest()->paginate(5);
+        return view('fumigator.pages.pesanan.index', compact('dbpesanan'));
     }
-    
+
     public function cetakpesanan()
-    {   $dbcetakpesanan = Pesanan::get();
-        return view('fumigator.pages.pesanan.cetak',compact('dbcetakpesanan'));
+    {
+        $dbcetakpesanan = Pesanan::get();
+        return view('fumigator.pages.pesanan.cetak', compact('dbcetakpesanan'));
     }
     /**
      * Show the form for creating a new resource.
@@ -39,14 +44,36 @@ class PesananController extends Controller
      */
     public function store(Request $request)
     {
-        Pesanan::create([
-            'nama_perusahaan'=> $request->nama_perusahaan,
-            'container'=> $request->container,
-            'tanggal_masuk'=> $request->tanggal_masuk,
-            'tanggal_akhir'=> $request->tanggal_akhir,
-            'status_pesanan'=> $request->status_pesanan,
-        ]);
+        $bulan_tahun = DB::table('penggunaan')
+            ->selectRaw('DATE_FORMAT(MAX(tanggal_penggunaan),"%m-%Y") as bulan')
+            ->whereRaw('DATE_FORMAT(tanggal_penggunaan, "%m-%Y") < DATE_FORMAT(now(), "%m-%Y")')
+            ->first();
+        $month_before = Carbon::createFromFormat('m-Y', $bulan_tahun->bulan)->subMonth(2)->format('m-Y');
+        $data = DB::table('detail_penggunaan as dp')
+            ->join('penggunaan as p', 'dp.id_penggunaan', '=', 'p.id')
+            ->join('persediaan as ps', 'dp.id_persediaan', '=', 'ps.id')
+            ->selectRaw('ps.id ,ps.nama_persediaan ,max(dp.jumlah_penggunaan)  as max, round(avg(dp.jumlah_penggunaan)) as avg, sum(dp.jumlah_penggunaan) as total')
+            ->whereRaw('DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") >= "' . $month_before . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") <= "' . $bulan_tahun->bulan . '"')
+            ->groupByRaw('ps.id ,ps.nama_persediaan')
+            ->get();
+        // dd($data);
+        foreach ($data as $d) {
+            # code...
+            $persediaan = DB::table('persediaan')->where('id', $d->id)->first();
+            // if ($d->avg * $request->container <= $persediaan->jumlah_persediaan) {
+            //     return redirect('tambah.pesanan')->with('toast_error', 'Barang Kurang');
+            // }
+        }
+        // $persediaan = Persediaan::all();
+        // dd($persediaan);
 
+        Pesanan::create([
+            'nama_perusahaan' => $request->nama_perusahaan,
+            'container' => $request->container,
+            'tanggal_masuk' => Carbon::now(),
+            'tanggal_akhir' => $request->tanggal_akhir,
+        ]);
+        
         return redirect('pesanan')->with('toast_success', 'Data Berhasil Ditambah');
     }
 
@@ -70,7 +97,7 @@ class PesananController extends Controller
     public function edit($id)
     {
         $pes = Pesanan::findorfail($id);
-        return view('fumigator.pages.pesanan.ubah',compact('pes'));
+        return view('fumigator.pages.pesanan.ubah', compact('pes'));
     }
 
     /**
