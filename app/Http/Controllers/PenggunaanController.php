@@ -76,6 +76,9 @@ class PenggunaanController extends Controller
                 $persediaan->save();
                 // Update stok persediaan sesuai dengan persediaan yang diinput ke detail penggunaan
             }
+            $dbpesanan = Pesanan::where('id', $id_pesanan)->first();
+            $dbpesanan->status_pesanan = 1;
+            $dbpesanan->save();
             DB::commit();
         } catch (\Exception $ex) {
             //throw $th;
