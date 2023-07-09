@@ -26,7 +26,7 @@ class PenggunaanController extends Controller
 
     public function cetakpenggunaan()
     {
-        $dbcetakpenggunaan = DetailPenggunaan::with('persediaan','penggunaan')->get();
+        $dbcetakpenggunaan = DetailPenggunaan::with('persediaan', 'penggunaan')->get();
         return view('fumigator.pages.penggunaan.cetak', compact('dbcetakpenggunaan'));
     }
 
@@ -39,8 +39,9 @@ class PenggunaanController extends Controller
     {
         $temporary_penggunaan = session("temporary_penggunaan");
         $dbpersediaan = Persediaan::all();
+        $dbpesanan = Pesanan::where('status_pesanan', 0)->get();
 
-        return view('fumigator.pages.penggunaan.tambah', compact('dbpersediaan', 'temporary_penggunaan'));
+        return view('fumigator.pages.penggunaan.tambah', compact('dbpersediaan', 'temporary_penggunaan', 'dbpesanan'));
     }
 
     /**
@@ -51,13 +52,18 @@ class PenggunaanController extends Controller
      */
     public function store(Request $request)
     {
-        $dbpenggunaan = Penggunaan::create([
-            'tanggal_penggunaan' => Carbon::now(),
-        ]);
 
         DB::beginTransaction();
         try {
+            $id_pesanan = '';
             $temporary_penggunaan = session("temporary_penggunaan");
+            foreach ($temporary_penggunaan as $temp) {
+                $id_pesanan = $temp['id_pesanan'];
+            }
+            $dbpenggunaan = Penggunaan::create([
+                'tanggal_penggunaan' => Carbon::now(),
+                'id_pesanan' => $id_pesanan
+            ]);
             foreach ($temporary_penggunaan as $temp) {
                 DetailPenggunaan::create([
                     'id_penggunaan' => $dbpenggunaan->id,
@@ -90,7 +96,8 @@ class PenggunaanController extends Controller
         // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
         $request->validate([
             'id_persediaan' => 'required',
-            'jumlah_penggunaan' => 'required'
+            'jumlah_penggunaan' => 'required',
+            'id_pesanan' => 'required'
         ]);
         // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
 
@@ -106,7 +113,8 @@ class PenggunaanController extends Controller
         $temporary_penggunaan[$request->id_persediaan] = [
             "id" => $request->id_persediaan,
             "nama_persediaan" => $dbpersediaan->nama_persediaan,
-            "jumlah_penggunaan" => $request->jumlah_penggunaan
+            "jumlah_penggunaan" => $request->jumlah_penggunaan,
+            "id_pesanan" => $request->id_pesanan
         ];
         // Memasukkan data array ke variabel session dengan id persediaan sebagai key
 

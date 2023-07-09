@@ -15,7 +15,7 @@
             </div>
         </div> --}}
         <!-- end page title -->
-        
+
 
         <div class="card shadow mb-3">
             <div class="card-header py-3 d-flex justify-content-between">
@@ -28,6 +28,18 @@
                         <div class="col-12">
                             {{-- <div class="card">
                     <div class="card-body"> --}}
+                            <div class="mb-3 row">
+                                <label for="example-date-input" class="col-md-2 col-form-label">Nama Perusahaan</label>
+                                <div class="col-md-10">
+                                    <select class="form-control select2" style="width: 100%;" name="id_pesanan"
+                                        id="id_persediaan">
+                                        <option disable value>Pilih Pesanan</option>
+                                        @foreach ($dbpesanan as $pesanan)
+                                            <option value="{{ $pesanan->id }}">{{ $pesanan->nama_perusahaan }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="mb-3 row">
                                 <label for="example-date-input" class="col-md-2 col-form-label">Nama Persediaan</label>
                                 <div class="col-md-10">
