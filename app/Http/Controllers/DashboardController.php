@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Persediaan;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -13,10 +16,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('fumigator.pages.dashboard.index', [
+        $jumlah_pesanan = DB::table('pesanan')->count();
+        $jumlah_pesanan_dijalankan = DB::table('pesanan')->where('status_pesanan',0)->count();
+        $jumlah_pesanan_container_dijalankan = DB::table('pesanan')->where('status_pesanan',0)->sum('container');
+        $jumlah_pesanan_container_selesai = DB::table('pesanan')->where('status_pesanan',1)->sum('container');
 
-            "title" => "Dashboard page"
-        ]);
+        $dbpersediaan = Persediaan::all();
+
+        return view('fumigator.pages.dashboard.index',compact('jumlah_pesanan', 'jumlah_pesanan_dijalankan','dbpersediaan','jumlah_pesanan_container_dijalankan', 'jumlah_pesanan_container_selesai') );
     }
 
     /**

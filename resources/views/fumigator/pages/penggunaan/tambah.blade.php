@@ -45,7 +45,7 @@
                                 <div class="col-md-10">
                                     <select class="form-control select2" style="width: 100%;" name="id_persediaan"
                                         id="id_persediaan">
-                                        <option disable value>Pilih Persediaan</option>
+                                        <option disable value>Pilsanih Persediaan</option>
                                         @foreach ($dbpersediaan as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama_persediaan }}</option>
                                         @endforeach

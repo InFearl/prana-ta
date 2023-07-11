@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Pemasukan;
+use App\Models\Pemesanan;
 use App\Models\Persediaan;
 use Illuminate\Http\Request;
 use App\Models\DetailPemasukan;
@@ -19,7 +20,7 @@ class PemasukanController extends Controller
      */
     public function index()
     {
-        $dbpemasukan = Pemasukan::latest()->paginate(5);
+        $dbpemasukan = Pemasukan::paginate();
         return view('fumigator.pages.pemasukan.index', compact('dbpemasukan'));
     }
 
@@ -37,7 +38,8 @@ class PemasukanController extends Controller
     {
         $temporary_pemasukan = session("temporary_pemasukan");
         $dbpersediaan = Persediaan::all();
-        return view('fumigator.pages.pemasukan.tambah', compact('dbpersediaan', 'temporary_pemasukan'));
+        $dbpemesanan = Pemesanan::where('status_pemesanan', 0)->get();
+        return view('fumigator.pages.pemasukan.tambah', compact('dbpersediaan','dbpemesanan', 'temporary_pemasukan'));
     }
 
     /**
@@ -48,13 +50,18 @@ class PemasukanController extends Controller
      */
     public function store(Request $request)
     {
-        $dbpemasukan = Pemasukan::create([
-            'tanggal_pemasukan' => Carbon::now(),
-        ]);
 
         DB::beginTransaction();
         try {
+            $id_pemesanan = '';
             $temporary_pemasukan = session("temporary_pemasukan");
+            foreach ($temporary_pemasukan as $temp) {
+                $id_pemesanan = $temp['id_pemesanan'];
+            }
+            $dbpemasukan = Pemasukan::create([
+                'tanggal_pemasukan' => Carbon::now(),
+                'id_pemesanan' => $id_pemesanan
+            ]);
             foreach ($temporary_pemasukan as $temp) {
                 DetailPemasukan::create([
                     'id_pemasukan' => $dbpemasukan->id,
@@ -67,6 +74,9 @@ class PemasukanController extends Controller
                 $persediaan->save();
                 // Update stok persediaan sesuai dengan persediaan yang diinput ke detail penggunaan
             }
+            $dbpemesanan = Pemesanan::where('id', $id_pemesanan)->first();
+            $dbpemesanan->status_pemesanan = 1;
+            $dbpemesanan->save();
             DB::commit();
         } catch (\Exception $ex) {
             //throw $th;
@@ -92,7 +102,8 @@ class PemasukanController extends Controller
         // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
         $request->validate([
             'id_persediaan' => 'required',
-            'jumlah_pemasukan' => 'required'
+            'jumlah_pemasukan' => 'required',
+            'id_pemesanan' => 'required'
         ]);
         // Validasi bahwa required itu harus diisi jika tidak maka akan dikembalikan ke halaman semula otomatis
 
@@ -114,7 +125,8 @@ class PemasukanController extends Controller
         $temporary_pemasukan[$request->id_persediaan] = [
             "id" => $request->id_persediaan,
             "nama_persediaan" => $dbpersediaan->nama_persediaan,
-            "jumlah_pemasukan" => $request->jumlah_pemasukan
+            "jumlah_pemasukan" => $request->jumlah_pemasukan,
+            "id_pemesanan" => $request->id_pemesanan
         ];
         // Memasukkan data array ke variabel session dengan id persediaan sebagai key
 
