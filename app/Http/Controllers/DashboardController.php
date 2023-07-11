@@ -17,13 +17,17 @@ class DashboardController extends Controller
     public function index()
     {
         $jumlah_pesanan = DB::table('pesanan')->count();
-        $jumlah_pesanan_dijalankan = DB::table('pesanan')->where('status_pesanan',0)->count();
-        $jumlah_pesanan_container_dijalankan = DB::table('pesanan')->where('status_pesanan',0)->sum('container');
-        $jumlah_pesanan_container_selesai = DB::table('pesanan')->where('status_pesanan',1)->sum('container');
+        $jumlah_pesanan_dijalankan = DB::table('pesanan')->where('status_pesanan', 0)->count();
+        $jumlah_pesanan_container_dijalankan = DB::table('pesanan')->where('status_pesanan', 0)->sum('container');
+        $jumlah_pesanan_container_selesai = DB::table('pesanan')->where('status_pesanan', 1)->sum('container');
 
         $dbpersediaan = Persediaan::all();
 
-        return view('fumigator.pages.dashboard.index',compact('jumlah_pesanan', 'jumlah_pesanan_dijalankan','dbpersediaan','jumlah_pesanan_container_dijalankan', 'jumlah_pesanan_container_selesai') );
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        // dd($checkrop);
+
+        return view('fumigator.pages.dashboard.index', compact('jumlah_pesanan', 'jumlah_pesanan_dijalankan', 'dbpersediaan', 'jumlah_pesanan_container_dijalankan', 'jumlah_pesanan_container_selesai', 'checkrop', 'count_rop'));
     }
 
     /**

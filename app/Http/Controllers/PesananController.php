@@ -44,26 +44,38 @@ class PesananController extends Controller
      */
     public function store(Request $request)
     {
-        $bulan_tahun = DB::table('penggunaan')
-            ->selectRaw('DATE_FORMAT(MAX(tanggal_penggunaan),"%m-%Y") as bulan')
-            ->whereRaw('DATE_FORMAT(tanggal_penggunaan, "%m-%Y") < DATE_FORMAT(now(), "%m-%Y")')
-            ->first();
-        $month_before = Carbon::createFromFormat('m-Y', $bulan_tahun->bulan)->subMonth(2)->format('m-Y');
-        $data = DB::table('detail_penggunaan as dp')
-            ->join('penggunaan as p', 'dp.id_penggunaan', '=', 'p.id')
-            ->join('persediaan as ps', 'dp.id_persediaan', '=', 'ps.id')
-            ->selectRaw('ps.id ,ps.nama_persediaan ,max(dp.jumlah_penggunaan)  as max, round(avg(dp.jumlah_penggunaan)) as avg, sum(dp.jumlah_penggunaan) as total')
-            ->whereRaw('DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") >= "' . $month_before . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") <= "' . $bulan_tahun->bulan . '"')
-            ->groupByRaw('ps.id ,ps.nama_persediaan')
-            ->get();
+        $param_stok = [
+            1 => 4,
+            2 => 2,
+            3 => 2,
+            4 => 1,
+            5 => 34,
+            6 => 9
+        ];
+        // $bulan_tahun = DB::table('penggunaan')
+        //     ->selectRaw('DATE_FORMAT(MAX(tanggal_penggunaan),"%m-%Y") as bulan')
+        //     ->whereRaw('DATE_FORMAT(tanggal_penggunaan, "%m-%Y") < DATE_FORMAT(now(), "%m-%Y")')
+        //     ->first();
+        // $month_before = Carbon::createFromFormat('m-Y', $bulan_tahun->bulan)->subMonth(2)->format('m-Y');
+        // $data = DB::table('detail_penggunaan as dp')
+        //     ->join('penggunaan as p', 'dp.id_penggunaan', '=', 'p.id')
+        //     ->join('persediaan as ps', 'dp.id_persediaan', '=', 'ps.id')
+        //     ->selectRaw('ps.id ,ps.nama_persediaan ,max(dp.jumlah_penggunaan)  as max, round(avg(dp.jumlah_penggunaan)) as avg, sum(dp.jumlah_penggunaan) as total')
+        //     ->whereRaw('DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") >= "' . $month_before . '" AND DATE_FORMAT(p.tanggal_penggunaan, "%m-%Y") <= "' . $bulan_tahun->bulan . '"')
+        //     ->groupByRaw('ps.id ,ps.nama_persediaan')
+        //     ->get();
         // dd($data);
-        foreach ($data as $d) {
-            # code...
-            $persediaan = DB::table('persediaan')->where('id', $d->id)->first();
-            // if ($d->avg * $request->container <= $persediaan->jumlah_persediaan) {
-            //     return redirect('tambah.pesanan')->with('toast_error', 'Barang Kurang');
-            // }
+
+        // foreach ($data as $d) {
+        # code...
+        $persediaan = DB::table('persediaan')->get();
+        foreach ($persediaan as $data) {
+            if ($data->jumlah_persediaan <= $param_stok[$data->id] * $request->container) {
+                return back()->with('toast_warning', 'Ada persediaan yang kurang');
+            }
         }
+
+        // }
         // $persediaan = Persediaan::all();
         // dd($persediaan);
 
@@ -73,7 +85,7 @@ class PesananController extends Controller
             'tanggal_masuk' => Carbon::now(),
             'tanggal_akhir' => $request->tanggal_akhir,
         ]);
-        
+
         return redirect('pesanan')->with('toast_success', 'Data Berhasil Ditambah');
     }
 
