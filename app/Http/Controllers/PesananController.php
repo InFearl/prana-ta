@@ -71,7 +71,13 @@ class PesananController extends Controller
         $persediaan = DB::table('persediaan')->get();
         foreach ($persediaan as $data) {
             if ($data->jumlah_persediaan <= $param_stok[$data->id] * $request->container) {
-                return back()->with('toast_warning', 'Ada persediaan yang kurang');
+                Pesanan::create([
+                    'nama_perusahaan' => $request->nama_perusahaan,
+                    'container' => $request->container,
+                    'tanggal_masuk' => Carbon::now(),
+                    'tanggal_akhir' => $request->tanggal_akhir,
+                ]);
+                return redirect('pesanan')->with('toast_warning', 'Ada persediaan yang kurang');
             }
         }
 
