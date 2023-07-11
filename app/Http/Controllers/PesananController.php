@@ -18,13 +18,17 @@ class PesananController extends Controller
     public function index()
     {
         $dbpesanan = Pesanan::latest()->paginate(5);
-        return view('fumigator.pages.pesanan.index', compact('dbpesanan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pesanan.index', compact('dbpesanan', 'checkrop', 'count_rop'));
     }
 
     public function cetakpesanan()
     {
         $dbcetakpesanan = Pesanan::get();
-        return view('fumigator.pages.pesanan.cetak', compact('dbcetakpesanan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pesanan.cetak', compact('dbcetakpesanan', 'checkrop', 'count_rop'));
     }
     /**
      * Show the form for creating a new resource.
@@ -33,7 +37,9 @@ class PesananController extends Controller
      */
     public function create()
     {
-        return view('fumigator.pages.pesanan.tambah',);
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pesanan.tambah', compact('checkrop', 'count_rop'));
     }
 
     /**
@@ -109,7 +115,10 @@ class PesananController extends Controller
     public function edit($id)
     {
         $pes = Pesanan::findorfail($id);
-        return view('fumigator.pages.pesanan.ubah', compact('pes'));
+
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pesanan.ubah', compact('pes', 'checkrop', 'count_rop'));
     }
 
     /**

@@ -21,13 +21,21 @@ class PemasukanController extends Controller
     public function index()
     {
         $dbpemasukan = Pemasukan::paginate();
-        return view('fumigator.pages.pemasukan.index', compact('dbpemasukan'));
+
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+
+        return view('fumigator.pages.pemasukan.index', compact('dbpemasukan', 'checkrop', 'count_rop'));
     }
 
     public function cetakpemasukan()
     {
         $dbcetakpemasukan = DetailPemasukan::with('persediaan','pemasukan')->get();
-        return view('fumigator.pages.pemasukan.cetak', compact('dbcetakpemasukan'));
+
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+
+        return view('fumigator.pages.pemasukan.cetak', compact('dbcetakpemasukan', 'checkrop', 'count_rop'));
     }
     /**
      * Show the form for creating a new resource.
@@ -39,7 +47,11 @@ class PemasukanController extends Controller
         $temporary_pemasukan = session("temporary_pemasukan");
         $dbpersediaan = Persediaan::all();
         $dbpemesanan = Pemesanan::where('status_pemesanan', 0)->get();
-        return view('fumigator.pages.pemasukan.tambah', compact('dbpersediaan','dbpemesanan', 'temporary_pemasukan'));
+
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+
+        return view('fumigator.pages.pemasukan.tambah', compact('dbpersediaan','dbpemesanan', 'temporary_pemasukan', 'checkrop', 'count_rop'));
     }
 
     /**
@@ -94,7 +106,9 @@ class PemasukanController extends Controller
 
         // $persediaan->save();
 
-        return redirect('pemasukan')->with('toast_success', 'Data Berhasil Ditambah');
+        
+
+        return redirect('pemasukan')->with('toast_success', 'Data Berhasil Ditambah',);
     }
 
     public function addListPemasukan(Request $request)
@@ -146,8 +160,9 @@ class PemasukanController extends Controller
     {
         $dbpemasukan = DetailPemasukan::with(['persediaan', 'pemasukan'])->where('id_pemasukan', $id)->get();
         // dd($dbpenggunaan);
-
-        return view('fumigator.pages.pemasukan.detail', compact('dbpemasukan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pemasukan.detail', compact('dbpemasukan', 'checkrop', 'count_rop'));
     }
 
     /**
@@ -160,7 +175,11 @@ class PemasukanController extends Controller
     {
         $dbpersediaan = Persediaan::all();
         $pem = Pemasukan::with('persediaan')->findorfail($id);
-        return view('fumigator.pages.pemasukan.ubah', compact('pem', 'dbpersediaan'));
+        
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        
+        return view('fumigator.pages.pemasukan.ubah', compact('pem', 'dbpersediaan', 'checkrop', 'count_rop'));
     }
 
     /**
