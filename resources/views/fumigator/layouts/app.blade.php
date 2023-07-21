@@ -11,7 +11,7 @@
 <body id="page-top">
 
     <div id="wrapper">
-        @include('fumigator.includes.Sidebar')
+        @include('fumigator.includes.sidebar')
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 @include('fumigator.includes.navbar')
