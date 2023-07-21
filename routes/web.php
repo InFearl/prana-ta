@@ -26,7 +26,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/login', 'authenticate')->name('authenticate.login');
 });
 
-route::middleware('users')->group(function(){
+route::middleware('users')->group(function () {
     Route::controller(LoginController::class)->group(function () {
         Route::get('/logout', 'logout')->name('logout.post');
     });
@@ -89,7 +89,8 @@ route::middleware('users')->group(function(){
         Route::get('/ubah.pesanan/{id}', 'edit')->name('ubah.pesanan');
         Route::post('/update.pesanan/{id}', 'update')->name('update.pesanan');
         Route::get('/delete.pesanan/{id}', 'destroy')->name('delete.pesanan');
-        Route::get('/cetak.pesanan/{tglawal}/{tglakhir}', 'cetakpesanan')->name('cetak.pesanan');
+        Route::get('/cetak.pesanan/{bulan_tahun}', 'cetakpesanan')->name('cetak.pesanan');
         Route::get('/form-cetak.pesanan', 'formcetakpesanan')->name('form-cetak.pesanan');
+        Route::post('/filter.pesanan', 'filterPesanan')->name('filter.pesanan');
     });
 });

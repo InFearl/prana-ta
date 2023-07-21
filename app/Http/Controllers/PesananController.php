@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PesananController extends Controller
 {
@@ -148,19 +149,40 @@ class PesananController extends Controller
         return back()->with('info', 'Data Berhasil Dihapus');
     }
 
-    public function formcetakpesanan(){
+    public function formcetakpesanan()
+    {
         $dbpesanan = Pesanan::latest()->paginate(5);
         $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
         $count_rop = count($checkrop);
         return view('fumigator.pages.pesanan.form-cetak', compact('dbpesanan', 'checkrop', 'count_rop'));
     }
 
-    public function cetakpesanan($tglawal, $tglakhir)
+    public function cetakpesanan($bulan_tahun = null)
     {
-        dd([$tglawal, $tglakhir]);
-        // $dbcetakpesanan = Pesanan::get();
-        // $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
-        // $count_rop = count($checkrop);
-        // return view('fumigator.pages.pesanan.cetak', compact('dbcetakpesanan', 'checkrop', 'count_rop'));
+        // dd($bulan_tahun);
+        $dbpesanan = DB::table('pesanan')
+            ->whereMonth('tanggal_masuk', substr($bulan_tahun, 5, 2))
+            ->whereYear('tanggal_masuk', substr($bulan_tahun, 0, 4))
+            ->get();
+        // dd($dbpesanan);
+        $tanggal = Carbon::now()->format('d-m-Y');
+        $pdf = Pdf::loadView('fumigator.pages.pesanan.cetak', compact('dbpesanan', 'tanggal'));
+        return $pdf->download('invoice.pdf');
+        // dd($tanggal);
+    }
+
+    public function filterPesanan(Request $request)
+    {
+        // dd(substr($request->bulan_tahun, 5, 2));
+        $dbpesanan = DB::table('pesanan')
+            ->whereMonth('tanggal_masuk', substr($request->bulan_tahun, 5, 2))
+            ->whereYear('tanggal_masuk', substr($request->bulan_tahun, 0, 4))
+            ->get();
+        // dd($dbpesanan);
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        $bulan_tahun = $request->bulan_tahun;
+
+        return view('fumigator.pages.pesanan.form-cetak', compact('dbpesanan', 'checkrop', 'count_rop', 'bulan_tahun'));
     }
 }
