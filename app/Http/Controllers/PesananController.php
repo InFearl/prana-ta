@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Persediaan;
 use App\Models\Pesanan;
+use App\Models\Persediaan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PesananController extends Controller
 {
@@ -23,13 +24,6 @@ class PesananController extends Controller
         return view('fumigator.pages.pesanan.index', compact('dbpesanan', 'checkrop', 'count_rop'));
     }
 
-    public function cetakpesanan()
-    {
-        $dbcetakpesanan = Pesanan::get();
-        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
-        $count_rop = count($checkrop);
-        return view('fumigator.pages.pesanan.cetak', compact('dbcetakpesanan', 'checkrop', 'count_rop'));
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -152,5 +146,21 @@ class PesananController extends Controller
         $pes = Pesanan::findorfail($id);
         $pes->delete();
         return back()->with('info', 'Data Berhasil Dihapus');
+    }
+
+    public function formcetakpesanan(){
+        $dbpesanan = Pesanan::latest()->paginate(5);
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pesanan.form-cetak', compact('dbpesanan', 'checkrop', 'count_rop'));
+    }
+
+    public function cetakpesanan($tglawal, $tglakhir)
+    {
+        dd([$tglawal, $tglakhir]);
+        // $dbcetakpesanan = Pesanan::get();
+        // $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        // $count_rop = count($checkrop);
+        // return view('fumigator.pages.pesanan.cetak', compact('dbcetakpesanan', 'checkrop', 'count_rop'));
     }
 }

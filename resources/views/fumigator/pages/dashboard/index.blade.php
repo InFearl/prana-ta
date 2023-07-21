@@ -110,11 +110,17 @@
                                     </td>
                                     <td>
                                         @if ($item->jumlah_persediaan <= $item->rop * 1.5)
-                                        <button type="button" class="btn btn-danger">Lakukan Pemesanan</button>
+                                        {{-- <button href="{{ route('tambah.pemesanan') }}" type="button" class="btn btn-danger">Lakukan Pemesanan</button> --}}
+                                        <a href="{{ route('tambah.pemesanan') }}" class="btn btn-danger"><i
+                                            ></i><span>Lakukan Pemesanan</span></a>
                                         @elseif ($item->jumlah_persediaan <= $item->rop)
-                                        <button type="button" class="btn btn-warning">Segera Memesan</button>
+                                        <a href="{{ route('tambah.pemesanan') }}" class="btn btn-warning"><i
+                                            ></i><span>Segera Memesan</span></a>
+                                        {{-- <button href="{{ route('tambah.pemesanan') }}" type="button" class="btn btn-warning">Segera Memesan</button> --}}
                                         @else
-                                        <button type="button" class="btn btn-success" >Aman</button>
+                                        {{-- <button type="button" class="btn btn-success" >Aman</button> --}}
+                                        <a  class="btn btn-success"><i
+                                            ></i><span>Aman</span></a>
                                         @endif
                                         
                                     </td>

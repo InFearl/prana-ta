@@ -14,8 +14,10 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div>
+                    @if (Auth::guard('users')->user()->role=="fumigator")
                     <a href="{{ route('tambah.pemasukan') }}" class="btn btn-success"><i
                             class="fas fa-plus"></i><span>Tambah</span></a>
+                    @endif
                     @if (Auth::guard('users')->user()->role=="manager")
                         <a href="{{ route('cetak.pemasukan') }}" target="_blank" class="btn btn-success"><i
                         class="fas fa-print"></i><span>Cetak</span></a>

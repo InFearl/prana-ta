@@ -22,13 +22,17 @@ class PemesananController extends Controller
     public function index()
     {
         $dbpemesanan = Pemesanan::with(['detailpemesanan.persediaan'])->orderBy('tanggal_pemesanan', 'desc')->latest()->paginate(20);
-        return view('fumigator.pages.pemesanan.index', compact('dbpemesanan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pemesanan.index', compact('dbpemesanan', 'checkrop', 'count_rop'));
     }
 
     public function cetakpemesanan()
     {
         $dbcetakpemesanan = DetailPemesanan::with('persediaan', 'pemesanan')->get();
-        return view('fumigator.pages.pemesanan.cetak', compact('dbcetakpemesanan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pemesanan.cetak', compact('dbcetakpemesanan', 'checkrop', 'count_rop'));
     }
 
     public function jumlahHari($bulan_tahun)
@@ -48,7 +52,9 @@ class PemesananController extends Controller
         // session()->forget("temporary_pemesanan");
         $temporary_pemesanan = session("temporary_pemesanan");
         $dbpersediaan = Persediaan::all();
-        return view('fumigator.pages.pemesanan.tambah', compact('dbpersediaan', 'temporary_pemesanan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pemesanan.tambah', compact('dbpersediaan', 'temporary_pemesanan', 'checkrop', 'count_rop'));
     }
 
     /**
@@ -153,8 +159,9 @@ class PemesananController extends Controller
     {
         $dbpemesanan = DetailPemesanan::with(['persediaan', 'pemesanan',])->where('id_pemesanan', $id)->get();
         // dd($dbpenggunaan);
-
-        return view('fumigator.pages.pemesanan.detail', compact('dbpemesanan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pemesanan.detail', compact('dbpemesanan', 'checkrop', 'count_rop'));
     }
 
     /**
@@ -167,7 +174,9 @@ class PemesananController extends Controller
     {
         $dbpersediaan = Persediaan::all();
         $peme = Pemesanan::with('persediaan')->findorfail($id);
-        return view('fumigator.pages.pemasukan.ubah', compact('peme', 'dbpersediaan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pemasukan.ubah', compact('peme', 'dbpersediaan', 'checkrop', 'count_rop'));
     }
 
     /**

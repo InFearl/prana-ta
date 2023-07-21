@@ -21,13 +21,17 @@ class PenggunaanController extends Controller
     public function index()
     {
         $dbpenggunaan = Penggunaan::with(['detailpenggunaan.persediaan.pesanan'])->latest()->paginate(5);
-        return view('fumigator.pages.penggunaan.index', compact('dbpenggunaan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.penggunaan.index', compact('dbpenggunaan', 'checkrop', 'count_rop'));
     }
 
     public function cetakpenggunaan()
     {
         $dbcetakpenggunaan = DetailPenggunaan::with('persediaan', 'penggunaan')->get();
-        return view('fumigator.pages.penggunaan.cetak', compact('dbcetakpenggunaan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.penggunaan.cetak', compact('dbcetakpenggunaan', 'checkrop', 'count_rop'));
     }
 
     /**
@@ -40,8 +44,9 @@ class PenggunaanController extends Controller
         $temporary_penggunaan = session("temporary_penggunaan");
         $dbpersediaan = Persediaan::all();
         $dbpesanan = Pesanan::where('status_pesanan', 0)->get();
-
-        return view('fumigator.pages.penggunaan.tambah', compact('dbpersediaan', 'temporary_penggunaan', 'dbpesanan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.penggunaan.tambah', compact('dbpersediaan', 'temporary_penggunaan', 'dbpesanan', 'checkrop', 'count_rop'));
     }
 
     /**
@@ -137,8 +142,9 @@ class PenggunaanController extends Controller
     {
         $dbpenggunaan = DetailPenggunaan::with(['persediaan', 'penggunaan'])->where('id_penggunaan', $id)->latest()->paginate(5);
         // dd($dbpenggunaan);
-
-        return view('fumigator.pages.penggunaan.detail', compact('dbpenggunaan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.penggunaan.detail', compact('dbpenggunaan', 'checkrop', 'count_rop'));
     }
 
     /**
@@ -151,7 +157,9 @@ class PenggunaanController extends Controller
     {
         $dbpersediaan = Persediaan::all();
         $pen = Penggunaan::with('persediaan')->findorfail($id);
-        return view('fumigator.pages.penggunaan.ubah', compact('pen', 'dbpersediaan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.penggunaan.ubah', compact('pen', 'dbpersediaan', 'checkrop', 'count_rop'));
     }
 
     /**

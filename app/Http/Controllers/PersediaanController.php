@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Persediaan;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PersediaanController extends Controller
 {
@@ -17,13 +19,17 @@ class PersediaanController extends Controller
 
         $dbpersediaan = Persediaan::all();
         // dd($persediaan);
-        return view('fumigator.pages.persediaan.index', compact('dbpersediaan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.persediaan.index', compact('dbpersediaan', 'checkrop', 'count_rop'));
     }
 
     public function cetakpersediaan()
     {
         $dbcetakpersediaan = Persediaan::get();
-        return view('fumigator.pages.persediaan.cetak', compact('dbcetakpersediaan'));
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.persediaan.cetak', compact('dbcetakpersediaan', 'checkrop', 'count_rop'));
     }
 
     /**
