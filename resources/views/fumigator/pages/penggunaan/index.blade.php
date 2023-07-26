@@ -18,7 +18,7 @@
                         class="fas fa-plus"></i><span>Tambah</span></a>
                     @endif
                     @if (Auth::guard('users')->user()->role=="manager")
-                        <a href="{{ route('cetak.penggunaan') }}" target="_blank" class="btn btn-success mx-1"><i
+                        <a href="{{ route('form-cetak.penggunaan') }}" target="_blank" class="btn btn-success mx-1"><i
                         class="fas fa-print"></i><span>Cetak</span></a>
                     @endif
                 </div>

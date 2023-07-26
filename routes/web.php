@@ -42,10 +42,12 @@ route::middleware('users')->group(function () {
         Route::get('/ubah.pemasukan/{id}', 'edit')->name('ubah.pemasukan');
         Route::post('/update.pemasukan/{id}', 'update')->name('update.pemasukan');
         Route::get('/delete.pemasukan/{id}', 'destroy')->name('delete.pemasukan');
-        Route::get('/cetak.pemasukan', 'cetakpemasukan')->name('cetak.pemasukan');
         Route::post('/add.pemasukan', 'addListPemasukan')->name('add.pemasukan');
         Route::get('/show.pemasukan/{id}', 'show')->name('show.pemasukan');
         Route::get('/destroy.pemasukan/{id}', 'destroyItemTemp')->name('destroy.pemasukan');
+        Route::post('/filter.pemasukan', 'filterPemasukan')->name('filter.pemasukan');
+        Route::get('/cetak.pemasukan/{bulan_tahun}', 'cetakpemasukan')->name('cetak.pemasukan');
+        Route::get('/form-cetak.pemasukan', 'formcetakpemasukan')->name('form-cetak.pemasukan');
     });
 
     route::controller(PenggunaanController::class)->group(function () {
@@ -55,10 +57,12 @@ route::middleware('users')->group(function () {
         Route::get('/ubah.penggunaan/{id}', 'edit')->name('ubah.penggunaan');
         Route::post('/update.penggunaan/{id}', 'update')->name('update.penggunaan');
         Route::get('/delete.penggunaan/{id}', 'destroy')->name('delete.penggunaan');
-        Route::get('/cetak.penggunaan', 'cetakpenggunaan')->name('cetak.penggunaan');
         Route::post('/add.penggunaan', 'addListPenggunaan')->name('add.penggunaan');
         Route::get('/show.penggunaan/{id}', 'show')->name('show.penggunaan');
         Route::get('/destroy.penggunaan/{id}', 'destroyItemTemp')->name('destroy.penggunaan');
+        Route::post('/filter.penggunaan', 'filterPenggunaan')->name('filter.penggunaan');
+        Route::get('/cetak.penggunaan/{bulan_tahun}', 'cetakpenggunaan')->name('cetak.penggunaan');
+        Route::get('/form-cetak.penggunaan', 'formcetakpenggunaan')->name('form-cetak.penggunaan');
     });
 
     route::controller(PersediaanController::class)->group(function () {
@@ -73,13 +77,15 @@ route::middleware('users')->group(function () {
         Route::get('/ubah.pemesanan/{id}', 'edit')->name('ubah.pemesanan');
         Route::post('/update.pemesanan/{id}', 'update')->name('update.pemesanan');
         Route::get('/delete.pemesanan/{id}', 'destroy')->name('delete.pemesanan');
-        Route::get('/cetak.pemesanan', 'cetakpemesanan')->name('cetak.pemesanan');
         Route::post('/add.pemesanan', 'addListPemesanan')->name('add.pemesanan');
         Route::post('/eoq.pemesanan', 'hitungEOQ')->name('eoq.pemesanan');
         Route::get('/show.pemesanan/{id}', 'show')->name('show.pemesanan');
         Route::get('/destroy.pemesanan/{id}', 'destroyItemTemp')->name('destroy.pemesanan');
         Route::post('/ubahjumlah.pemesanan', 'ubahJumlah')->name('ubahjumlah.pemesanan');
         Route::get('/changestatus.pemesanan/{id}', 'ChangeStatus')->name('changestatus.pemesanan');
+        Route::post('/filter.pemesanan', 'filterPemesanan')->name('filter.pemesanan');
+        Route::get('/cetak.pemesanan/{bulan_tahun}', 'cetakpemesanan')->name('cetak.pemesanan');
+        Route::get('/form-cetak.pemesanan', 'formcetakpemesanan')->name('form-cetak.pemesanan');
     });
 
     route::controller(PesananController::class)->group(function () {

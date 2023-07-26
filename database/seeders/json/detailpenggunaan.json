@@ -676,5 +676,77 @@
         "id_persediaan": "3",
         "id_penggunaan": "32",
         "jumlah_penggunaan": "2"
+    },
+    {
+        "id": "114",
+        "id_persediaan": "1",
+        "id_penggunaan": "33",
+        "jumlah_penggunaan": "50"
+    },
+    {
+        "id": "115",
+        "id_persediaan": "2",
+        "id_penggunaan": "33",
+        "jumlah_penggunaan": "5"
+    },
+    {
+        "id": "116",
+        "id_persediaan": "3",
+        "id_penggunaan": "33",
+        "jumlah_penggunaan": "5"
+    },
+    {
+        "id": "117",
+        "id_persediaan": "4",
+        "id_penggunaan": "33",
+        "jumlah_penggunaan": "20"
+    },
+    {
+        "id": "118",
+        "id_persediaan": "5",
+        "id_penggunaan": "33",
+        "jumlah_penggunaan": "50"
+    },
+    {
+        "id": "119",
+        "id_persediaan": "6",
+        "id_penggunaan": "33",
+        "jumlah_penggunaan": "20"
+    },
+    {
+        "id": "120",
+        "id_persediaan": "1",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "50"
+    },
+    {
+        "id": "121",
+        "id_persediaan": "2",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "5"
+    },
+    {
+        "id": "122",
+        "id_persediaan": "3",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "5"
+    },
+    {
+        "id": "123",
+        "id_persediaan": "4",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "20"
+    },
+    {
+        "id": "124",
+        "id_persediaan": "5",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "50"
+    },
+    {
+        "id": "125",
+        "id_persediaan": "6",
+        "id_penggunaan": "34",
+        "jumlah_penggunaan": "20"
     }
 ]

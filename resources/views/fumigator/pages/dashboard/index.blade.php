@@ -86,6 +86,7 @@
                                 <th>Nama Persediaan</th>
                                 <th>Stock Persediaan</th>
                                 <th>ROP</th>
+                                <th>Safety Stock</th>
                                 <th>Indikator</th>
                             </tr>
                         </thead>
@@ -95,6 +96,7 @@
                                 <th>Nama Persediaan</th>
                                 <th>Stock Persediaan</th>
                                 <th>ROP</th>
+                                <th>Safety Stock</th>
                                 <th>Indikator</th>
                             </tr>
                         </tfoot>
@@ -106,17 +108,16 @@
                                     <td>{{ $item->jumlah_persediaan }}</td>
                                     {{-- <td>{{ $item-> }}</td> --}}
                                     <td>{{ $item->rop }}
+                                    <td>{{ $item->safety_stock }}</td>
                                     
                                     </td>
                                     <td>
-                                        @if ($item->jumlah_persediaan <= $item->rop * 1.5)
-                                        {{-- <button href="{{ route('tambah.pemesanan') }}" type="button" class="btn btn-danger">Lakukan Pemesanan</button> --}}
+                                        @if ($item->jumlah_persediaan <= $item->safety_stock)
                                         <a href="{{ route('tambah.pemesanan') }}" class="btn btn-danger"><i
                                             ></i><span>Lakukan Pemesanan</span></a>
                                         @elseif ($item->jumlah_persediaan <= $item->rop)
                                         <a href="{{ route('tambah.pemesanan') }}" class="btn btn-warning"><i
                                             ></i><span>Segera Memesan</span></a>
-                                        {{-- <button href="{{ route('tambah.pemesanan') }}" type="button" class="btn btn-warning">Segera Memesan</button> --}}
                                         @else
                                         {{-- <button type="button" class="btn btn-success" >Aman</button> --}}
                                         <a  class="btn btn-success"><i

@@ -58,12 +58,11 @@
             </tr>
         </table>
         <br>
-        <h3>Laporan Pesanan</h3>
+        <h3>{{ $title }}</h3>
     </center>
     <div>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%">
             <tr>
-                <th>Id Pesanan</th>
                 <th>Nama Perusahaan</th>
                 <th>Container</th>
                 <th>Tanggal Masuk Pesan</th>
@@ -72,8 +71,6 @@
             </tr>
             @foreach ($dbpesanan as $item)
                 <tr>
-
-                    <td>{{ $item->id }}</td>
                     <td>{{ $item->nama_perusahaan }}</td>
                     <td>{{ $item->container }}</td>
                     <td>{{ date('d-m-Y', strtotime($item->tanggal_masuk)) }}</td>

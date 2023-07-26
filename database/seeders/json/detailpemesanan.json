@@ -302,9 +302,44 @@
     },
     {
         "id": "44",
-        "id_pemesanan": "12",
+        "id_pemesanan": "13",
+        "id_persediaan": "1",
+        "eoq": "0",
+        "jumlah_pemesanan": "533"
+    },
+    {
+        "id": "45",
+        "id_pemesanan": "13",
+        "id_persediaan": "2",
+        "eoq": "0",
+        "jumlah_pemesanan": "112"
+    },
+    {
+        "id": "46",
+        "id_pemesanan": "13",
+        "id_persediaan": "3",
+        "eoq": "0",
+        "jumlah_pemesanan": "80"
+    },
+    {
+        "id": "47",
+        "id_pemesanan": "13",
+        "id_persediaan": "4",
+        "eoq": "0",
+        "jumlah_pemesanan": "76"
+    },
+    {
+        "id": "48",
+        "id_pemesanan": "13",
         "id_persediaan": "5",
         "eoq": "0",
-        "jumlah_pemesanan": "145"
+        "jumlah_pemesanan": "202"
+    },
+    {
+        "id": "49",
+        "id_pemesanan": "13",
+        "id_persediaan": "6",
+        "eoq": "0",
+        "jumlah_pemesanan": "187"
     }
 ]

@@ -9,6 +9,8 @@ use App\Models\Persediaan;
 use Illuminate\Http\Request;
 use App\Models\DetailPemasukan;
 use App\Models\DetailPemesanan;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\DetailPenggunaan;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -25,14 +27,6 @@ class PemesananController extends Controller
         $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
         $count_rop = count($checkrop);
         return view('fumigator.pages.pemesanan.index', compact('dbpemesanan', 'checkrop', 'count_rop'));
-    }
-
-    public function cetakpemesanan()
-    {
-        $dbcetakpemesanan = DetailPemesanan::with('persediaan', 'pemesanan')->get();
-        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
-        $count_rop = count($checkrop);
-        return view('fumigator.pages.pemesanan.cetak', compact('dbcetakpemesanan', 'checkrop', 'count_rop'));
     }
 
     public function jumlahHari($bulan_tahun)
@@ -331,5 +325,51 @@ class PemesananController extends Controller
         Pemesanan::where('id', $id)->update(['status_pemesanan' => $status_pemesanan]);
 
         return redirect()->back();
+    }
+
+    public function formcetakpemesanan()
+    {
+        $dbpemesanan = DetailPemesanan::with('persediaan', 'pemesanan')->get();
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.pemesanan.form-cetak', compact('dbpemesanan', 'checkrop', 'count_rop'));
+    }
+
+    public function cetakpemesanan($bulan_tahun = null)
+    {
+        $dbpemesanan = DB::table('pemesanan as pg')
+            ->join('detail_pemesanan as dp', 'pg.id', '=', 'dp.id_pemesanan')
+            ->join('persediaan as pd', 'pd.id', '=', 'dp.id_persediaan')
+            ->whereMonth('pg.tanggal_pemesanan', substr($bulan_tahun, 5, 2))
+            ->whereYear('pg.tanggal_pemesanan', substr($bulan_tahun, 0, 4))
+            ->get();
+        // dd($dbpenggunaan);   
+
+        $tanggal = Carbon::now()->format('d F Y');
+        $title = 'Laporan Pemesanan'.' '. $tanggal;
+        $pdf = Pdf::loadView('fumigator.pages.pemesanan.cetak', compact('dbpemesanan', 'tanggal','title'));
+
+        return $pdf->download('Laporan Pemesanan'.' '.$tanggal.'.pdf');
+        // dd($tanggal);
+    }
+
+    public function filterPemesanan(Request $request)
+    {
+        // dd(substr($request->bulan_tahun, 5, 2));
+        $dbpemesanan = DB::table('pemesanan as pg')
+            ->join('detail_pemesanan as dp', 'pg.id', '=', 'dp.id_pemesanan')
+            ->join('persediaan as pd', 'pd.id', '=', 'dp.id_persediaan')
+            ->whereMonth('pg.tanggal_pemesanan', substr($request->bulan_tahun, 5, 2))
+            ->whereYear('pg.tanggal_pemesanan', substr($request->bulan_tahun, 0, 4))
+            ->get();
+        // dd($dbpenggunaan);
+
+        // $dbpenggunaan = DetailPenggunaan::with('persediaan', 'penggunaan')->get();
+        // dd($dbpesanan);
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        $bulan_tahun = $request->bulan_tahun;
+
+        return view('fumigator.pages.pemesanan.form-cetak', compact('dbpemesanan', 'checkrop', 'count_rop', 'bulan_tahun'));
     }
 }

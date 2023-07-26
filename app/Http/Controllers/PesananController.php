@@ -165,9 +165,10 @@ class PesananController extends Controller
             ->whereYear('tanggal_masuk', substr($bulan_tahun, 0, 4))
             ->get();
         // dd($dbpesanan);
-        $tanggal = Carbon::now()->format('d-m-Y');
-        $pdf = Pdf::loadView('fumigator.pages.pesanan.cetak', compact('dbpesanan', 'tanggal'));
-        return $pdf->download('invoice.pdf');
+        $tanggal = Carbon::now()->format('d F Y');
+        $title = 'Laporan Pesanan'.' '. $tanggal;
+        $pdf = Pdf::loadView('fumigator.pages.pesanan.cetak', compact('dbpesanan', 'tanggal','title'));
+        return $pdf->download('Laporan Pesanan'.' '.$tanggal.'.pdf');
         // dd($tanggal);
     }
 

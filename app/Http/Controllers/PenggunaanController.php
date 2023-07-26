@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Pesanan;
 use App\Models\Penggunaan;
 use App\Models\Persediaan;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\DetailPenggunaan;
-use App\Models\Pesanan;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -25,15 +26,6 @@ class PenggunaanController extends Controller
         $count_rop = count($checkrop);
         return view('fumigator.pages.penggunaan.index', compact('dbpenggunaan', 'checkrop', 'count_rop'));
     }
-
-    public function cetakpenggunaan()
-    {
-        $dbcetakpenggunaan = DetailPenggunaan::with('persediaan', 'penggunaan')->get();
-        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
-        $count_rop = count($checkrop);
-        return view('fumigator.pages.penggunaan.cetak', compact('dbcetakpenggunaan', 'checkrop', 'count_rop'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -206,5 +198,51 @@ class PenggunaanController extends Controller
         unset($temporary_penggunaan[$id_persediaan]);
         session(["temporary_penggunaan" => $temporary_penggunaan]);
         return redirect()->route('tambah.penggunaan');
+    }
+
+    public function formcetakpenggunaan()
+    {
+        $dbpenggunaan = DetailPenggunaan::with('persediaan', 'penggunaan')->get();
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        return view('fumigator.pages.penggunaan.form-cetak', compact('dbpenggunaan', 'checkrop', 'count_rop'));
+    }
+
+    public function cetakpenggunaan($bulan_tahun = null)
+    {
+        $dbpenggunaan = DB::table('penggunaan as pg')
+            ->join('detail_penggunaan as dp', 'pg.id', '=', 'dp.id_penggunaan')
+            ->join('persediaan as pd', 'pd.id', '=', 'dp.id_persediaan')
+            ->whereMonth('pg.tanggal_penggunaan', substr($bulan_tahun, 5, 2))
+            ->whereYear('pg.tanggal_penggunaan', substr($bulan_tahun, 0, 4))
+            ->get();
+        // dd($dbpenggunaan);   
+
+        $tanggal = Carbon::now()->format('d F Y');
+        $title = 'Laporan Penggunaan'.' '. $tanggal;
+        $pdf = Pdf::loadView('fumigator.pages.penggunaan.cetak', compact('dbpenggunaan', 'tanggal','title'));
+
+        return $pdf->download('Laporan Penggunaan'.' '.$tanggal.'.pdf');
+        // dd($tanggal);
+    }
+
+    public function filterPenggunaan(Request $request)
+    {
+        // dd(substr($request->bulan_tahun, 5, 2));
+        $dbpenggunaan = DB::table('penggunaan as pg')
+            ->join('detail_penggunaan as dp', 'pg.id', '=', 'dp.id_penggunaan')
+            ->join('persediaan as pd', 'pd.id', '=', 'dp.id_persediaan')
+            ->whereMonth('pg.tanggal_penggunaan', substr($request->bulan_tahun, 5, 2))
+            ->whereYear('pg.tanggal_penggunaan', substr($request->bulan_tahun, 0, 4))
+            ->get();
+        // dd($dbpenggunaan);
+
+        // $dbpenggunaan = DetailPenggunaan::with('persediaan', 'penggunaan')->get();
+        // dd($dbpesanan);
+        $checkrop = DB::table('persediaan')->whereRaw('jumlah_persediaan <= rop')->get();
+        $count_rop = count($checkrop);
+        $bulan_tahun = $request->bulan_tahun;
+
+        return view('fumigator.pages.penggunaan.form-cetak', compact('dbpenggunaan', 'checkrop', 'count_rop', 'bulan_tahun'));
     }
 }

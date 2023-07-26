@@ -31,7 +31,6 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Id Pesanan</th>
                                 <th>Nama Perusahaan</th>
                                 <th>Container</th>
                                 <th>Tanggal Masuk Pesanan</th>
@@ -44,7 +43,6 @@
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Id Pesanan</th>
                                 <th>Nama Perusahaan</th>
                                 <th>Container</th>
                                 <th>Tanggal Masuk Pesanan</th>
@@ -59,7 +57,6 @@
                             @if (!empty($dbpesanan))
                                 @foreach ($dbpesanan as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->nama_perusahaan }}</td>
                                         <td>{{ $item->container }}</td>
                                         <td>{{ date('d-m-y', strtotime($item->tanggal_masuk)) }}</td>

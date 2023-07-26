@@ -31,7 +31,7 @@
     <center>
         <table width="100%">
             <tr>
-                <td><img src="{{asset('template/img/logo_prana.png')}}" width="100%" height="130"></td>
+                <td><img src="{{public_path('template/img/logo_prana.png')}}" width="100%" height="130"></td>
                 <td style="padding-right: 4rem;">
                     <center>
                         <font size="6"><b>PT Prana Argentum Corporation </b></font><br>
@@ -47,7 +47,7 @@
         <table style="margin-top: 30px;">
             <tr class="text2">
                 <td>Tanggal Cetak</td>
-                <td>: tanggal</td>
+                <td>: {{ $tanggal }}</td>
             </tr>
             <tr>
                 <td>Perihal</td>
@@ -55,7 +55,7 @@
             </tr>
         </table>
         <br>
-        <h3>Laporan Persediaan</h3>
+        <h3>{{ $title }}</h3>
     </center>
     <div>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%">
