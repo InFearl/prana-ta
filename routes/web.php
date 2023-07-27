@@ -63,6 +63,7 @@ route::middleware('users')->group(function () {
         Route::post('/filter.penggunaan', 'filterPenggunaan')->name('filter.penggunaan');
         Route::get('/cetak.penggunaan/{bulan_tahun}', 'cetakpenggunaan')->name('cetak.penggunaan');
         Route::get('/form-cetak.penggunaan', 'formcetakpenggunaan')->name('form-cetak.penggunaan');
+        Route::get('/confirm-save', 'storeConfirm')->name('confirm-save');
     });
 
     route::controller(PersediaanController::class)->group(function () {

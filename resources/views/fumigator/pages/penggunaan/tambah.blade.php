@@ -15,8 +15,6 @@
             </div>
         </div> --}}
         <!-- end page title -->
-
-
         <div class="card shadow mb-3">
             <div class="card-header py-3 d-flex justify-content-between">
                 <h6 class="m-2 font-weight-bold text-primary">Pilih Persediaan</h6>
@@ -45,7 +43,7 @@
                                 <div class="col-md-10">
                                     <select class="form-control select2" style="width: 100%;" name="id_persediaan"
                                         id="id_persediaan">
-                                        <option disable value>Pilsanih Persediaan</option>
+                                        <option disable value>Pilih Persediaan</option>
                                         @foreach ($dbpersediaan as $item)
                                             <option value="{{ $item->id }}">{{ $item->nama_persediaan }}</option>
                                         @endforeach
@@ -128,7 +126,28 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $('#dataTable').DataTable();
+        @if (session()->has('alert'))
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Swal.fire(
+                    //     'Deleted!',
+                    //     'Your file has been deleted.',
+                    //     'success'
+                    // )
+                    window.location.href = '/confirm-save';
+                }
+            })
+        @endif
     </script>
 @endpush

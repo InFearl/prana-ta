@@ -67,6 +67,56 @@ class PenggunaanController extends Controller
                     'id_persediaan' => $temp['id'],
                     'jumlah_penggunaan' => $temp['jumlah_penggunaan']
                 ]);
+
+
+                // Update stok persediaan sesuai dengan persediaan yang diinput ke detail penggunaan
+                $persediaan = Persediaan::where('id', $temp['id'])->first();
+                $stok_sisa = $persediaan->jumlah_persediaan - $temp['jumlah_penggunaan'];
+                if ($stok_sisa < $persediaan->safety_stock) {
+                    return back()->with('alert', 'thousand stars');
+                }
+                $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan - $temp['jumlah_penggunaan'];
+                $persediaan->save();
+                // Update stok persediaan sesuai dengan persediaan yang diinput ke detail penggunaan
+            }
+            $dbpesanan = Pesanan::where('id', $id_pesanan)->first();
+            $dbpesanan->status_pesanan = 1;
+            $dbpesanan->save();
+            DB::commit();
+        } catch (\Exception $ex) {
+            //throw $th;
+            echo $ex->getMessage();
+            DB::rollBack();
+        }
+
+        //Menghapus session 
+        session()->forget("temporary_penggunaan");
+        //Menghapus session 
+
+
+        return redirect('penggunaan')->with('toast_success', 'Data Berhasil Ditambah');
+    }
+
+    public function storeConfirm()
+    {
+        DB::beginTransaction();
+        try {
+            $id_pesanan = '';
+            $temporary_penggunaan = session("temporary_penggunaan");
+            foreach ($temporary_penggunaan as $temp) {
+                $id_pesanan = $temp['id_pesanan'];
+            }
+            $dbpenggunaan = Penggunaan::create([
+                'tanggal_penggunaan' => Carbon::now(),
+                'id_pesanan' => $id_pesanan
+            ]);
+            foreach ($temporary_penggunaan as $temp) {
+                DetailPenggunaan::create([
+                    'id_penggunaan' => $dbpenggunaan->id,
+                    'id_persediaan' => $temp['id'],
+                    'jumlah_penggunaan' => $temp['jumlah_penggunaan']
+                ]);
+
                 // Update stok persediaan sesuai dengan persediaan yang diinput ke detail penggunaan
                 $persediaan = Persediaan::where('id', $temp['id'])->first();
                 $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan - $temp['jumlah_penggunaan'];
@@ -219,10 +269,10 @@ class PenggunaanController extends Controller
         // dd($dbpenggunaan);   
 
         $tanggal = Carbon::now()->format('d F Y');
-        $title = 'Laporan Penggunaan'.' '. $tanggal;
-        $pdf = Pdf::loadView('fumigator.pages.penggunaan.cetak', compact('dbpenggunaan', 'tanggal','title'));
+        $title = 'Laporan Penggunaan' . ' ' . $tanggal;
+        $pdf = Pdf::loadView('fumigator.pages.penggunaan.cetak', compact('dbpenggunaan', 'tanggal', 'title'));
 
-        return $pdf->download('Laporan Penggunaan'.' '.$tanggal.'.pdf');
+        return $pdf->download('Laporan Penggunaan' . ' ' . $tanggal . '.pdf');
         // dd($tanggal);
     }
 
