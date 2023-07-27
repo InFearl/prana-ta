@@ -129,15 +129,15 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $('#dataTable').DataTable();
-        @if (session()->has('alert'))
+        @if (session()->has('peringatan'))
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Alert',
+                text: "Apakah Yakin Ingin Menggunakan Safety Stock?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Iya, Gunakan!!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Swal.fire(

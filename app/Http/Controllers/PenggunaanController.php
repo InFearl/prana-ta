@@ -73,7 +73,7 @@ class PenggunaanController extends Controller
                 $persediaan = Persediaan::where('id', $temp['id'])->first();
                 $stok_sisa = $persediaan->jumlah_persediaan - $temp['jumlah_penggunaan'];
                 if ($stok_sisa < $persediaan->safety_stock) {
-                    return back()->with('alert', 'thousand stars');
+                    return back()->with('peringatan', 'thousand stars');
                 }
                 $persediaan->jumlah_persediaan = $persediaan->jumlah_persediaan - $temp['jumlah_penggunaan'];
                 $persediaan->save();
